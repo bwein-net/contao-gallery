@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<xliff version="1.1">
+    <file source-language="en">
+        <body>
+            <trans-unit id="MOD.gallery.0">
+                <source>Galleries</source>
+            </trans-unit>
+            <trans-unit id="MOD.gallery.1">
+                <source>Manage galleries</source>
+            </trans-unit>
+            <trans-unit id="MOD.tl_bwein_gallery">
+                <source>Galleries</source>
+            </trans-unit>
+            <trans-unit id="FMD.gallery">
+                <source>Galleries</source>
+            </trans-unit>
+            <trans-unit id="FMD.gallerylist.0">
+                <source>Gallerylist</source>
+            </trans-unit>
+            <trans-unit id="FMD.gallerylist.1">
+                <source>Adds a list of galleries to the page</source>
+            </trans-unit>
+            <trans-unit id="FMD.galleryreader.0">
+                <source>Galleryreader</source>
+            </trans-unit>
+            <trans-unit id="FMD.galleryreader.1">
+                <source>Shows the details of a gallery</source>
+            </trans-unit>
+            <trans-unit id="FMD.gallerycategory.0">
+                <source>Gallery category</source>
+            </trans-unit>
+            <trans-unit id="FMD.gallerycategory.1">
+                <source>Adds a gallery category to the page</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

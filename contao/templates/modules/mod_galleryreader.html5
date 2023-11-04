@@ -1,0 +1,13 @@
+<?php $this->extend($this->isUnsearchable ? 'block_unsearchable' : 'block_searchable'); ?>
+
+<?php $this->block('content'); ?>
+
+  <?= $this->galleries ?>
+
+  <?php if ($this->referer): ?>
+    <!-- indexer::stop -->
+    <p class="back"><a href="<?= $this->referer ?>" title="<?= $this->back ?>"><?= $this->back ?></a></p>
+    <!-- indexer::continue -->
+  <?php endif; ?>
+
+<?php $this->endblock(); ?>

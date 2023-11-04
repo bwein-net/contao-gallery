@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<xliff version="1.1">
+    <file source-language="en" target-language="de">
+        <body>
+            <trans-unit id="tl_user.gallery.0">
+                <source>Allowed categories</source>
+                <target>Erlaubte Kategorien</target>
+            </trans-unit>
+            <trans-unit id="tl_user.gallery.1">
+                <source>Here you can grant access to one or more gallery categories.</source>
+                <target>Hier können Sie den Zugriff auf ein oder mehrere Galerie-Kategorien erlauben.</target>
+            </trans-unit>
+            <trans-unit id="tl_user.galleryp.0">
+                <source>Category permissions</source>
+                <target>Katgeorierechte</target>
+            </trans-unit>
+            <trans-unit id="tl_user.galleryp.1">
+                <source>Here you can define the gallery permissions.</source>
+                <target>Hier können Sie die Katgeorierechte festlegen.</target>
+            </trans-unit>
+            <trans-unit id="tl_user.gallery_legend">
+                <source>Category permissions</source>
+                <target>Katgeorierechte</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

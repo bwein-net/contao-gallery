@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<xliff version="1.1">
+    <file source-language="en">
+        <body>
+            <trans-unit id="MSC.gallery_emptyList">
+                <source>Currently there are no galleries.</source>
+            </trans-unit>
+            <trans-unit id="MSC.galleryPicker">
+                <source>Galleries</source>
+            </trans-unit>
+            <trans-unit id="MSC.galleryOverview">
+              <source>Back to the gallery overview</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

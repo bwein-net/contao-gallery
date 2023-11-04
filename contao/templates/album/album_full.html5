@@ -1,0 +1,75 @@
+<div class="layout_full block<?= $this->class ?>">
+
+  <h1><?= $this->title ?></h1>
+
+  <p class="info">
+    <span class="startDate">
+      <?= $this->startDateParsed ?>
+    </span>
+    <?php if ($this->endDate): ?>
+        <span class="diff">-</span>
+        <span class="endDate">
+          <?= $this->endDateParsed ?>
+        </span>
+    <?php endif; ?>
+    <span class="separator">&middot;</span>
+    <span class="total">
+      <?= $this->total ?>
+      <?= $this->trans('tl_bwein_gallery.images.0', [], 'contao_tl_bwein_gallery') ?>
+    </span>
+    <?php if ($this->event): ?>
+      <span class="separator">&middot;</span>
+      <span class="event">
+        <?= $this->trans('tl_bwein_gallery.event.0', [], 'contao_tl_bwein_gallery') ?>:
+        <?= $this->event ?>
+      </span>
+    <?php endif; ?>
+    <?php if ($this->place): ?>
+      <span class="separator">&middot;</span>
+      <span class="place">
+        <?= $this->trans('tl_bwein_gallery.place.0', [], 'contao_tl_bwein_gallery') ?>:
+        <?= $this->place ?>
+      </span>
+    <?php endif; ?>
+    <?php if ($this->photographer): ?>
+      <span class="separator">&middot;</span>
+      <span class="photographer">
+        <?= $this->trans('tl_bwein_gallery.photographer.0', [], 'contao_tl_bwein_gallery') ?>:
+        <?= $this->photographer ?>
+      </span>
+    <?php endif; ?>
+  </p>
+
+  <?php if ($this->description): ?>
+    <div class="ce_text block">
+        <?= $this->description ?>
+    </div>
+  <?php endif; ?>
+
+  <?php if ($this->figuresBefore): ?>
+    <!-- indexer::stop -->
+    <div class="hide" style="display: none !important;">
+      <?php foreach ($this->figuresBefore as $figure): ?>
+          <?php $this->insert('image', $figure->getLegacyTemplateData()) ?>
+      <?php endforeach; ?>
+    </div>
+    <!-- indexer::continue -->
+  <?php endif; ?>
+
+  <div class="ce_gallery block">
+      <?php $this->insert('gallery_default', $this->arrData); ?>
+  </div>
+
+  <?php if ($this->figuresAfter): ?>
+    <!-- indexer::stop -->
+    <div class="hide" style="display: none !important;">
+      <?php foreach ($this->figuresAfter as $figure): ?>
+          <?php $this->insert('image', $figure->getLegacyTemplateData()) ?>
+      <?php endforeach; ?>
+    </div>
+    <!-- indexer::continue -->
+  <?php endif; ?>
+
+  <?= $this->pagination ?>
+
+</div>

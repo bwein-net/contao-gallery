@@ -1,0 +1,75 @@
+{
+  "name": "bwein-net/contao-gallery",
+  "description": "Gallery albums for Contao Open Source CMS",
+  "keywords": [
+    "contao",
+    "gallery",
+    "album",
+    "category",
+    "photo"
+  ],
+  "type": "contao-bundle",
+  "homepage": "https://github.com/bwein-net/contao-gallery",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "bwein.net",
+      "homepage": "https://bwein.net/",
+      "role": "Developer"
+    },
+    {
+      "name": "Ralf Baussenwein",
+      "homepage": "https://github.com/rabauss",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/bwein-net/contao-gallery/issues",
+    "source": "https://github.com/bwein-net/contao-gallery"
+  },
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/rabauss"
+    }
+  ],
+  "require": {
+    "php": "^8.2",
+    "contao/core-bundle": "^4.13 || ^5.0",
+    "symfony/config": "^5.4 || ^6.0",
+    "symfony/dependency-injection": "^5.4 || ^6.0",
+    "symfony/http-foundation": "^5.4 || ^6.0",
+    "symfony/http-kernel": "^5.4 || ^6.0",
+    "symfony/routing": "^5.4 || ^6.0",
+    "symfony/security-core": "^5.4 || ^6.0",
+    "symfony/translation": "^5.4 || ^6.0"
+  },
+  "require-dev": {
+    "contao/manager-plugin": "^2.0",
+    "terminal42/contao-changelanguage": "^3.6"
+  },
+  "suggest": {
+    "oveleon/contao-component-style-manager": "Supports style for galleries."
+  },
+  "autoload": {
+    "psr-4": {
+      "Bwein\\Gallery\\": "src/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "contao-components/installer": true,
+      "contao/manager-plugin": true,
+      "php-http/discovery": true
+    }
+  },
+  "extra": {
+    "contao-manager-plugin": "Bwein\\Gallery\\ContaoManager\\Plugin"
+  },
+  "scripts": {
+    "ecs": [
+      "@php tools/ecs/vendor/bin/ecs check contao/ src/ --fix --ansi",
+      "@php tools/ecs/vendor/bin/ecs check contao/ src/ --config ecs_template.php --fix --ansi"
+    ]
+  }
+}

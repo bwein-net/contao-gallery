@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<xliff version="1.1">
+    <file source-language="en" target-language="de">
+        <body>
+            <trans-unit id="tl_module.bweinGalleryCategories.0">
+                <source>Gallery category</source>
+                <target>Galeriealben</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryCategories.1">
+                <source>Please select one or more gallery categories.</source>
+                <target>Bitte wählen Sie ein oder mehrere Galeriealben.</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryListFeatured.0">
+                <source>Featured Galleries</source>
+                <target>Hervorgehobene Galerien</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryListFeatured.1">
+                <source>Here you can choose how featured galleries are handled.</source>
+                <target>Hier legen Sie fest, wie hervorgehobene Galerien gehandhabt werden.</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryListFeaturedOptions.all_galleries">
+                <source>Show all galleries</source>
+                <target>Alle Galerien anzeigen</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryListFeaturedOptions.featured_galleries">
+                <source>Show featured galleries only</source>
+                <target>Nur hervorgehobene Galerien anzeigen</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryListFeaturedOptions.unfeatured_galleries">
+                <source>Skip featured galleries</source>
+                <target>Hervorgehobene Galerien überspringen</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryListFeaturedOptions.featured_galleries_first">
+                <source>Show featured galleries first</source>
+                <target>Hervorgehobene Galerien zuerst anzeigen</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryListOrder.0">
+                <source>Sort order</source>
+                <target>Sortierreihenfolge</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryListOrder.1">
+                <source>Here you can choose the sort order.</source>
+                <target>Hier können Sie die Sortierreihenfolge festlegen.</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryListOrderOptions.order_date_asc">
+                <source>Date ascending</source>
+                <target>Datum aufsteigend</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryListOrderOptions.order_date_desc">
+                <source>Date descending</source>
+                <target>Datum absteigend</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryListOrderOptions.order_title_asc">
+                <source>Title ascending</source>
+                <target>Titel aufsteigend</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryListOrderOptions.order_title_desc">
+                <source>Title descending</source>
+                <target>Titel absteigend</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryListOrderOptions.order_random">
+                <source>Random order</source>
+                <target>Zufällige Reihenfolge</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryPreviewImage.0">
+                <source>Preview image type</source>
+                <target>Vorschaubild-Art</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryPreviewImage.1">
+                <source>Please select how the preview image will be displayed.</source>
+                <target>Bitte wählen Sie, wie das Vorschaubild angezeigt werden soll.</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryPreviewImageOptions.use_album_options">
+                <source>Settings of album take over</source>
+                <target>Einstellungen von Album übernehmen</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryPreviewImageOptions.no_preview_images">
+                <source>No preview image</source>
+                <target>Keine Vorschaubilder</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryPreviewImageOptions.random_images">
+                <source>Random preview image</source>
+                <target>Zufällige Vorschaubilder</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryPreviewImageOptions.first_image">
+                <source>First preview image</source>
+                <target>Erstes Vorschaubild</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryPreviewImageOptions.random_images_at_no_preview_images">
+                <source>Random preview images at an undefined use preview image</source>
+                <target>Zufällige Vorschaubild bei nicht definiertem Vorschaubild verwenden</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryPreviewImageOptions.first_image_at_no_preview_images">
+                <source>First preview image at an undefined use preview image</source>
+                <target>Erstes Vorschaubild bei nicht definiertem Vorschaubild verwenden</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryReaderModule.0">
+                <source>Gallery reader module</source>
+                <target>Galerieleser</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryReaderModule.1">
+                <source>Automatically switch to the gallery reader if a gallery has been selected.</source>
+                <target>Automatisch zum Galerieleser wechseln, wenn eine Galerie ausgewählt wurde.</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryTemplate.0">
+                <source>Gallery template</source>
+                <target>Galerietemplate</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryTemplate.1">
+                <source>Here you can select the gallery template.</source>
+                <target>Hier können Sie das Galerietemplate auswählen.</target>
+            </trans-unit>
+            <trans-unit id="tl_module.grid_legend">
+                <source>Grid-Settings</source>
+                <target>Grid-Einstellungen</target>
+            </trans-unit>
+            <trans-unit id="tl_module.grid_columns.0">
+                <source>Grid Columns &amp; Rows</source>
+                <target>Grid Columns &amp; Rows</target>
+            </trans-unit>
+            <trans-unit id="tl_module.grid_columns.1">
+                <source>for example: col-sm-5</source>
+                <target>Beispiel: col-sm-5</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryPerRow.0">
+                <source>Thumbnails per row</source>
+                <target>Vorschaubilder pro Reihe</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryPerRow.1">
+                <source>The number of image thumbnails per row.</source>
+                <target>Die Anzahl an Vorschaubildern pro Reihe.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

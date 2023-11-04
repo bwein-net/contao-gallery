@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<xliff version="1.1">
+    <file source-language="en">
+        <body>
+            <trans-unit id="tl_user.gallery.0">
+                <source>Allowed categories</source>
+            </trans-unit>
+            <trans-unit id="tl_user.gallery.1">
+                <source>Here you can grant access to one or more gallery categories.</source>
+            </trans-unit>
+            <trans-unit id="tl_user.galleryp.0">
+                <source>Gallery permissions</source>
+            </trans-unit>
+            <trans-unit id="tl_user.galleryp.1">
+                <source>Here you can define the gallery permissions.</source>
+            </trans-unit>
+            <trans-unit id="tl_user.gallery_legend">
+                <source>Gallery permissions</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

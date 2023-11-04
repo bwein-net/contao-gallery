@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<xliff version="1.1">
+    <file source-language="en" target-language="de">
+        <body>
+            <trans-unit id="tl_bwein_gallery_category.tstamp.0">
+                <source>Revision date</source>
+                <target>Änderungsdatum</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery_category.tstamp.1">
+                <source>Date and time of the latest revision</source>
+                <target>Datum und Uhrzeit der letzten Änderung</target>
+            </trans-unit>
+
+            <trans-unit id="tl_bwein_gallery_category.title_legend">
+                <source>Title and redirect page</source>
+                <target>Titel und Weiterleitung</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery_category.title.0">
+                <source>Title</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery_category.title.1">
+                <source>Please enter a gallery category title.</source>
+                <target>Bitte geben Sie den Galeriekategorie-Titel ein.</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery_category.jumpTo.0">
+                <source>Redirect page</source>
+                <target>Weiterleitungsseite</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery_category.jumpTo.1">
+                <source>Please choose the announement reader page to which visitors will be
+                    redirected when clicking a gallery.
+                </source>
+                <target>Bitte wählen Sie die Galerieleser-Seite aus, zu der Besucher weitergeleitet
+                    werden, wenn Sie eine Galerie anklicken.
+                </target>
+            </trans-unit>
+
+            <trans-unit id="tl_bwein_gallery_category.protected_legend">
+                <source>Access protection</source>
+                <target>Zugriffsschutz</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery_category.protected.0">
+                <source>Protect category</source>
+                <target>Kategorie schützen</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery_category.protected.1">
+                <source>Show gallery categorie to certain member groups only.</source>
+                <target>Galeriekategorie nur bestimmten Mitgliedergruppen anzeigen.</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery_category.groups.0">
+                <source>Allowed member groups</source>
+                <target>Erlaubte Mitgliedergruppen</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery_category.groups.1">
+                <source>These groups will be able to see the galleries in this category.</source>
+                <target>Diese Mitgliedergruppen können die Galerien der Kategorie sehen.</target>
+            </trans-unit>
+
+            <trans-unit id="tl_bwein_gallery_category.language_legend">
+                <source>Language settings</source>
+                <target>Spracheinstellungen</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery_category.master.0">
+                <source>Master category</source>
+                <target>Hauptkategorie</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery_category.master.1">
+                <source>Please define the master category to allow language switching.</source>
+                <target>Wählen Sie die Hauptkategorie um Sprachwechsel zu ermöglichen.</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery_category.language.0">
+                <source>Language</source>
+                <target>Sprache</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery_category.language.1">
+                <source>Please enter the page language according to the ISO-639-1 standard (e.g.
+                    &quot;en&quot; for English or &quot;en-US&quot; for American English).</source>
+                <target>Bitte geben Sie die Sprache gemäss ISO-639-1 Standard ein (z.B.
+                    &quot;en&quot; für Englisch oder &quot;en-US&quot; für amerikanisches Englisch).</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery_category.isMaster">
+                <source>This is a master category</source>
+                <target>Dies ist eine Hauptkategorie</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery_category.isSlave">
+                <source>Master category is &quot;%s&quot;</source>
+                <target>Die Hauptkategorie ist &quot;%s&quot;</target>
+            </trans-unit>
+
+            <trans-unit id="tl_bwein_gallery_category.new.0">
+                <source>New category</source>
+                <target>Neue Kategorie</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery_category.new.1">
+                <source>Create a new gallery category</source>
+                <target>Eine neue Galeriekategorie erstellen</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery_category.show">
+                <source>Show the details of gallery category ID %s</source>
+                <target>Details der Galeriekategorie ID %s anzeigen</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery_category.edit">
+                <source>Edit gallery category ID %s</source>
+                <target>Galeriekategorie ID %s bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery_category.editheader">
+                <source>Edit the settings of gallery category ID %s</source>
+                <target>Einstellungen der Galeriekategorie ID %s bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery_category.editmeta">
+                <source>Edit the gallery category settings</source>
+                <target>Galeriekategorieeinstellungen bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery_category.copy">
+                <source>Duplicate gallery category ID %s</source>
+                <target>Galeriekategorie ID %s duplizieren</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery_category.delete">
+                <source>Delete gallery category ID %s</source>
+                <target>Galeriekategorie ID %s löschen</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

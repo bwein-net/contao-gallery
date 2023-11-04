@@ -1,0 +1,30 @@
+<div class="layout_latest cat_<?= $this->category->id ?> block<?= $this->class ?>">
+
+  <?php if ($this->previewFigure): ?>
+    <a href="<?= $this->link ?>">
+      <?php $this->insert('image', $this->previewFigure->getLegacyTemplateData()) ?>
+    </a>
+  <?php endif; ?>
+
+  <h2>
+    <?= $this->linkTitle ?>
+  </h2>
+
+  <p class="info">
+    <span class="startDate">
+      <?= $this->startDateParsed ?>
+    </span>
+    <?php if ($this->endDate): ?>
+        <span class="diff">-</span>
+        <span class="endDate">
+          <?= $this->endDateParsed ?>
+        </span>
+    <?php endif; ?>
+    <span class="separator">&middot;</span>
+    <span class="total">
+      <?= $this->total ?>
+      <?= $this->trans('tl_bwein_gallery.images.0', [], 'contao_tl_bwein_gallery') ?>
+    </span>
+  </p>
+
+</div>

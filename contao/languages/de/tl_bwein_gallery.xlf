@@ -1,0 +1,318 @@
+<?xml version="1.0"?>
+<xliff version="1.1">
+    <file source-language="en" target-language="de">
+        <body>
+            <trans-unit id="tl_bwein_gallery.tstamp.0">
+                <source>Revision date</source>
+                <target>Änderungsdatum</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.tstamp.1">
+                <source>Date and time of the latest revision</source>
+                <target>Datum und Uhrzeit der letzten Änderung</target>
+            </trans-unit>
+
+            <trans-unit id="tl_bwein_gallery.title_legend">
+                <source>Title and author</source>
+                <target>Titel und Autor</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.title.0">
+                <source>Title</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.title.1">
+                <source>Please enter the gallery title.</source>
+                <target>Bitte geben Sie den Galerie-Titel ein.</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.featured.0">
+                <source>Feature gallery</source>
+                <target>Galerie hervorheben</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.featured.1">
+                <source>Show the gallery in a featured gallery list.</source>
+                <target>Die Galerie in einer Liste hervorgehobener Galerien anzeigen.</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.alias.0">
+                <source>Gallery alias</source>
+                <target>Galeriealias</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.alias.1">
+                <source>The gallery alias is a unique gallery to the gallery which can be called
+                    instead of its numeric ID.
+                </source>
+                <target>Der Galeriealias ist eine eindeutige Galerie, die anstelle der numerischen
+                    Galerie-ID aufgerufen werden kann.
+                </target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.author.0">
+                <source>Author</source>
+                <target>Autor</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.author.1">
+                <source>Here you can change the author of the gallery.</source>
+                <target>Hier können Sie den Autor der Galerie ändern.</target>
+            </trans-unit>
+
+            <trans-unit id="tl_bwein_gallery.date_legend">
+                <source>Date</source>
+                <target>Datum</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.startDate.0">
+                <source>Start date</source>
+                <target>Startdatum</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.startDate.1">
+                <source>Please enter the start date according to the global date format.</source>
+                <target>Bitte geben Sie das Startdatum gemäß des globalen Datumsformats ein.</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.endDate.0">
+                <source>End date</source>
+                <target>Enddatum</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.endDate.1">
+                <source>Enter an end date here when the shooting takes several days. Otherwise, leave this field empty.</source>
+                <target>Tragen Sie hier ein Enddatum ein, wenn die Aufnahmen über mehrere Tage dauerten. Ansonsten lassen Sie dieses Feld einfach leer.</target>
+            </trans-unit>
+
+            <trans-unit id="tl_bwein_gallery.source_legend">
+                <source>Source</source>
+                <target>Quelle</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.images.0">
+                <source>Images</source>
+                <target>Bilder</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.images.1">
+                <source>Please select one or more files from the files directory.</source>
+                <target>Bitte wählen Sie eine oder mehrere Dateien aus der Dateiübersicht.</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.sortBy.0">
+                <source>Order by</source>
+                <target>Sortieren nach</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.sortBy.1">
+                <source>Please choose the sort order.</source>
+                <target>Bitte wählen Sie die Sortierreihenfolge aus.</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.previewImageType.0">
+                <source>Preview image type</source>
+                <target>Vorschaubild-Art</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.previewImageType.1">
+                <source>Please select how the preview image will be displayed.</source>
+                <target>Bitte wählen Sie, wie das Vorschaubild angezeigt werden soll.</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.previewImageTypeOptions.no_preview_image">
+                <source>No preview image</source>
+                <target>Kein Vorschaubild</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.previewImageTypeOptions.random_preview_image">
+                <source>Random preview image</source>
+                <target>Zufälliges Vorschaubild</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.previewImageTypeOptions.first_preview_image">
+                <source>First preview image</source>
+                <target>Erstes Vorschaubild</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.previewImageTypeOptions.select_preview_image">
+                <source>Select preview image</source>
+                <target>Vorschaubild auswählen</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.previewImage.0">
+                <source>Preview image</source>
+                <target>Vorschaubild</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.previewImage.1">
+                <source>Please select one file from the files directory.</source>
+                <target>Bitte wählen Sie eine Datei aus der Dateiübersicht.</target>
+            </trans-unit>
+
+            <trans-unit id="tl_bwein_gallery.info_legend">
+                <source>Infos</source>
+                <target>Infos</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.event.0">
+                <source>Event</source>
+                <target>Ereignis</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.event.1">
+                <source>Here you can enter a event.</source>
+                <target>Hier können Sie ein Ereignis eingeben.</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.place.0">
+                <source>Place</source>
+                <target>Aufnahmeort</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.place.1">
+                <source>Here you can enter a place.</source>
+                <target>Hier können Sie einen Aufnahmeort eingeben.</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.photographer.0">
+                <source>Photographer</source>
+                <target>Fotograf</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.photographer.1">
+                <source>Here you can enter a photographer.</source>
+                <target>Hier können Sie einen Fotograf eingeben.</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.description.0">
+                <source>Description</source>
+                <target>Beschreibung</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.description.1">
+                <source>Here you can enter a description.</source>
+                <target>Hier können Sie eine Beschreibung eingeben.</target>
+            </trans-unit>
+
+            <trans-unit id="tl_bwein_gallery.meta_legend">
+                <source>Metadata</source>
+                <target>Metadaten</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.metaTitle.0">
+                <source>Meta title</source>
+                <target>Meta-Titel</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.metaTitle.1">
+                <source>Here you can add a custom meta title to overwrite the default page title.</source>
+                <target>Hier können Sie einen individuellen Meta-Titel eingeben, um den
+                    Standard-Seitentitel zu überschreiben.</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.robots.0">
+                <source>Robots tag</source>
+                <target>Robots-Tag</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.robots.1">
+                <source>Here you can overwrite how search engines handle the event.</source>
+                <target>Hier legen Sie fest, wie Suchmaschinen das Event behandeln.</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.metaDescription.0">
+                <source>Meta description</source>
+                <target>Meta-Beschreibung</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.metaDescription.1">
+                <source>Here you can add a custom meta description to overwrite the default page
+                    description.</source>
+                <target>Hier können Sie eine individuelle Meta-Beschreibung eingeben, um die
+                    Standard-Seitenbeschreibung zu überschreiben.</target>
+            </trans-unit>
+
+            <trans-unit id="tl_bwein_gallery.style_manager_legend">
+                <source>Style Manager</source>
+                <target>Style Manager</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.styleManager.0">
+                <source>Style Manager</source>
+                <target>Style Manager</target>
+            </trans-unit>
+
+            <trans-unit id="tl_bwein_gallery.expert_legend">
+                <source>Expert settings</source>
+                <target>Experteneinstellungen</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.cssClass.0">
+                <source>CSS class</source>
+                <target>CSS-Klasse</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.cssClass.1">
+                <source>Here you can enter one or more classes.</source>
+                <target>Hier können Sie eine oder mehrere Klassen eingeben.</target>
+            </trans-unit>
+
+            <trans-unit id="tl_bwein_gallery.publish_legend">
+                <source>Publish settings</source>
+                <target>Veröffentlichung</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.published.0">
+                <source>Publish gallery</source>
+                <target>Galerie veröffentlichen</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.published.1">
+                <source>Make the gallery publicly visible on the website.</source>
+                <target>Die Galerie auf der Webseite anzeigen.</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.start.0">
+                <source>Show from</source>
+                <target>Anzeigen ab</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.start.1">
+                <source>If you want to prevent the gallery from showing on the website before a
+                    certain date/time, you can enter it here. Otherwise leave the field blank.
+                </source>
+                <target>Wenn Sie die Galerie erst ab einem bestimmten Zeitpunkt auf der Webseite
+                    anzeigen möchten, können Sie diesen hier eingeben. Andernfalls lassen Sie das
+                    Feld leer.
+                </target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.stop.0">
+                <source>Show until</source>
+                <target>Anzeigen bis</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.stop.1">
+                <source>If you want to prevent the gallery from showing on the website after a
+                    certain date/time, you can enter it here. Otherwise leave the field blank.
+                </source>
+                <target>Wenn Sie die Galerie nur bis zu einem bestimmten Zeitpunkt auf der Webseite
+                    anzeigen möchten, können Sie diesen hier eingeben. Andernfalls lassen Sie das
+                    Feld leer.
+                </target>
+            </trans-unit>
+
+            <trans-unit id="tl_bwein_gallery.new.0">
+                <source>New gallery</source>
+                <target>Neue Galerie</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.new.1">
+                <source>Create a new gallery</source>
+                <target>Eine neue Galerie erstellen</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.show">
+                <source>Show the details of gallery ID %s</source>
+                <target>Details der Galerie ID %s anzeigen</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.edit">
+                <source>Edit gallery ID %s</source>
+                <target>Galerie ID %s bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.copy">
+                <source>Duplicate gallery ID %s</source>
+                <target>Galerie ID %s duplizieren</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.cut">
+                <source>Move gallery ID %s</source>
+                <target>Galerie ID %s verschieben</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.delete">
+                <source>Delete gallery ID %s</source>
+                <target>Galerie ID %s löschen</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.toggle">
+                <source>Publish/unpublish gallery ID %s</source>
+                <target>Galerie ID %s veröffentlichen/unveröffentlichen</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.feature">
+                <source>Feature/unfeature gallery ID %s</source>
+                <target>Galerie ID %s hervorheben/zurücksetzen</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.editheader">
+                <source>Edit the settings of gallery ID %s</source>
+                <target>Einstellungen der Galerie ID %s bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.pasteafter.0">
+                <source>Paste into this gallery archive</source>
+                <target>In diese Galeriekategorie einfügen</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.editmeta">
+                <source>Edit the gallery settings</source>
+                <target>Die Galerieeinstellungen bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.languageMain.0">
+                <source>Master gallery</source>
+                <target>Hauptgalerie</target>
+            </trans-unit>
+            <trans-unit id="tl_bwein_gallery.languageMain.1">
+                <source>Choose the gallery in the master category equaling this gallery.</source>
+                <target>Bitte wählen Sie die Galerie in der Hauptkategorie, welche dieser
+                    entspricht.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

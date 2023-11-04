@@ -1,0 +1,11 @@
+rocksolid_frontend_helper:
+    backend_modules:
+        bwein_gallery:
+            do: gallery
+            table: tl_bwein_gallery
+            column: bweinGalleryCategories
+            column_type: serialized
+            icon: settings.svg
+            fe_modules:
+                - gallerylist
+                - galleryreader

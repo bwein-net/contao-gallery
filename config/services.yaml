@@ -1,0 +1,17 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    _instanceof:
+        Contao\CoreBundle\Framework\FrameworkAwareInterface:
+            calls:
+                - ['setFramework', ['@contao.framework']]
+
+    Bwein\Gallery\:
+        resource: '../src/*'
+        exclude: '../src/{DependencyInjection,Model,Resources}'
+
+    Bwein\Gallery\EventListener\BackendAssetsListener:
+        tags:
+            - { name: 'kernel.event_listener', event: 'kernel.request' }
