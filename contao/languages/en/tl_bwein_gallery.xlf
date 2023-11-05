@@ -52,7 +52,8 @@
                 <source>End date</source>
             </trans-unit>
             <trans-unit id="tl_bwein_gallery.endDate.1">
-                <source>Enter an end date here when the shooting takes several days. Otherwise, leave this field empty.</source>
+                <source>Enter an end date here when the shooting takes several days. Otherwise,
+                    leave this field empty.</source>
             </trans-unit>
 
             <trans-unit id="tl_bwein_gallery.source_legend">

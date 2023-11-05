@@ -86,11 +86,13 @@
                 <source>First preview image</source>
                 <target>Erstes Vorschaubild</target>
             </trans-unit>
-            <trans-unit id="tl_module.bweinGalleryPreviewImageOptions.random_images_at_no_preview_images">
+            <trans-unit
+                id="tl_module.bweinGalleryPreviewImageOptions.random_images_at_no_preview_images">
                 <source>Random preview images at an undefined use preview image</source>
                 <target>Zufällige Vorschaubild bei nicht definiertem Vorschaubild verwenden</target>
             </trans-unit>
-            <trans-unit id="tl_module.bweinGalleryPreviewImageOptions.first_image_at_no_preview_images">
+            <trans-unit
+                id="tl_module.bweinGalleryPreviewImageOptions.first_image_at_no_preview_images">
                 <source>First preview image at an undefined use preview image</source>
                 <target>Erstes Vorschaubild bei nicht definiertem Vorschaubild verwenden</target>
             </trans-unit>

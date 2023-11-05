@@ -69,8 +69,10 @@
                 <target>Enddatum</target>
             </trans-unit>
             <trans-unit id="tl_bwein_gallery.endDate.1">
-                <source>Enter an end date here when the shooting takes several days. Otherwise, leave this field empty.</source>
-                <target>Tragen Sie hier ein Enddatum ein, wenn die Aufnahmen über mehrere Tage dauerten. Ansonsten lassen Sie dieses Feld einfach leer.</target>
+                <source>Enter an end date here when the shooting takes several days. Otherwise,
+                    leave this field empty.</source>
+                <target>Tragen Sie hier ein Enddatum ein, wenn die Aufnahmen über mehrere Tage
+                    dauerten. Ansonsten lassen Sie dieses Feld einfach leer.</target>
             </trans-unit>
 
             <trans-unit id="tl_bwein_gallery.source_legend">

@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
 <xliff version="1.1">
     <file source-language="en" target-language="de">
         <body>
@@ -8,7 +8,8 @@
             </trans-unit>
             <trans-unit id="tl_user.gallery.1">
                 <source>Here you can grant access to one or more gallery categories.</source>
-                <target>Hier können Sie den Zugriff auf ein oder mehrere Galerie-Kategorien erlauben.</target>
+                <target>Hier können Sie den Zugriff auf ein oder mehrere Galerie-Kategorien
+                    erlauben.</target>
             </trans-unit>
             <trans-unit id="tl_user.galleryp.0">
                 <source>Category permissions</source>

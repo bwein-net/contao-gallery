@@ -28,7 +28,7 @@
                 <target>Weiterleitungsseite</target>
             </trans-unit>
             <trans-unit id="tl_bwein_gallery_category.jumpTo.1">
-                <source>Please choose the announement reader page to which visitors will be
+                <source>Please choose the gallery reader page to which visitors will be
                     redirected when clicking a gallery.
                 </source>
                 <target>Bitte wählen Sie die Galerieleser-Seite aus, zu der Besucher weitergeleitet

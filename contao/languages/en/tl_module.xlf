@@ -65,10 +65,12 @@
             <trans-unit id="tl_module.bweinGalleryPreviewImageOptions.first_image">
                 <source>First preview image</source>
             </trans-unit>
-            <trans-unit id="tl_module.bweinGalleryPreviewImageOptions.random_images_at_no_preview_images">
+            <trans-unit
+                id="tl_module.bweinGalleryPreviewImageOptions.random_images_at_no_preview_images">
                 <source>Random preview images at an undefined use preview image</source>
             </trans-unit>
-            <trans-unit id="tl_module.bweinGalleryPreviewImageOptions.first_image_at_no_preview_images">
+            <trans-unit
+                id="tl_module.bweinGalleryPreviewImageOptions.first_image_at_no_preview_images">
                 <source>First preview image at an undefined use preview image</source>
             </trans-unit>
             <trans-unit id="tl_module.bweinGalleryReaderModule.0">

@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
 <xliff version="1.1">
     <file source-language="en" target-language="de">
         <body>
@@ -11,8 +11,8 @@
                 <target>Galerien</target>
             </trans-unit>
             <trans-unit id="MSC.galleryOverview">
-              <source>Back to the gallery overview</source>
-              <target>Zurück zur Galerieübersicht</target>
+                <source>Back to the gallery overview</source>
+                <target>Zurück zur Galerieübersicht</target>
             </trans-unit>
         </body>
     </file>
