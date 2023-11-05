@@ -3,8 +3,8 @@
     <file source-language="en" target-language="de">
         <body>
             <trans-unit id="tl_user.gallery.0">
-                <source>Allowed categories</source>
-                <target>Erlaubte Kategorien</target>
+                <source>Allowed gallery categories</source>
+                <target>Erlaubte Galerie-Kategorien</target>
             </trans-unit>
             <trans-unit id="tl_user.gallery.1">
                 <source>Here you can grant access to one or more gallery categories.</source>
@@ -12,16 +12,16 @@
                     erlauben.</target>
             </trans-unit>
             <trans-unit id="tl_user.galleryp.0">
-                <source>Category permissions</source>
-                <target>Katgeorierechte</target>
+                <source>Gallery Category permissions</source>
+                <target>Galerie-Katgeorierechte</target>
             </trans-unit>
             <trans-unit id="tl_user.galleryp.1">
                 <source>Here you can define the gallery permissions.</source>
                 <target>Hier können Sie die Katgeorierechte festlegen.</target>
             </trans-unit>
             <trans-unit id="tl_user.gallery_legend">
-                <source>Category permissions</source>
-                <target>Katgeorierechte</target>
+                <source>Gallery permissions</source>
+                <target>Galerierechte</target>
             </trans-unit>
         </body>
     </file>
