@@ -28,9 +28,12 @@ class PreviewUrlConvertListener
 {
     private ContaoFramework $framework;
 
-    public function __construct(ContaoFramework $framework)
+    private GalleryUrlRenderer $urlRenderer;
+
+    public function __construct(ContaoFramework $framework, GalleryUrlRenderer $urlRenderer)
     {
         $this->framework = $framework;
+        $this->urlRenderer = $urlRenderer;
     }
 
     /**
@@ -50,10 +53,7 @@ class PreviewUrlConvertListener
             return;
         }
 
-        /** @var GalleryUrlRenderer $galleryAdapter */
-        $galleryAdapter = $this->framework->getAdapter(GalleryUrlRenderer::class);
-
-        $event->setUrl($request->getSchemeAndHttpHost().'/'.$galleryAdapter->generateGalleryUrl($gallery));
+        $event->setUrl($request->getSchemeAndHttpHost().'/'.$this->urlRenderer->generateGalleryUrl($gallery));
     }
 
     private function getGalleryModel(Request $request): GalleryModel|null
