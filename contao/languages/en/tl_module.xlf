@@ -92,11 +92,23 @@
             <trans-unit id="tl_module.grid_columns.1">
                 <source>for example: col-sm-5</source>
             </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryNumberOfItems.0">
+                <source>Number of gallery images</source>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryNumberOfItems.1">
+                <source>Here you can limit the total number of gallery images. Set to 0 to show all.</source>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryPerPage.0">
+                <source>Gallery images per page</source>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryPerPage.1">
+                <source>The number of gallery images per page. Set to 0 to disable pagination.</source>
+            </trans-unit>
             <trans-unit id="tl_module.bweinGalleryPerRow.0">
-                <source>Thumbnails per row</source>
+                <source>Gallery images per row</source>
             </trans-unit>
             <trans-unit id="tl_module.bweinGalleryPerRow.1">
-                <source>The number of image thumbnails per row.</source>
+                <source>The number of gallery images per row.</source>
             </trans-unit>
         </body>
     </file>

@@ -15,16 +15,16 @@ use ErdmannFreunde\ContaoGridBundle\EventListener\DataContainer\GridColsOptionsL
 
 // Add palettes to tl_module
 $GLOBALS['TL_DCA']['tl_module']['palettes']['gallerylist'] = '{title_legend},name,headline,type;
-                                                                        {config_legend},bweinGalleryCategories,bweinGalleryReaderModule,numberOfItems,bweinGalleryListFeatured,bweinGalleryListOrder,skipFirst,perPage,bweinGalleryPreviewImage;
+                                                                        {config_legend},bweinGalleryCategories,bweinGalleryReaderModule,numberOfItems,bweinGalleryListFeatured,bweinGalleryListOrder,skipFirst,perPage;
                                                                         {template_legend:hide},bweinGalleryTemplate,customTpl;
-                                                                        {image_legend:hide},imgSize;
+                                                                        {image_legend:hide},imgSize,fullsize,bweinGalleryPreviewImage,bweinGalleryNumberOfItems,bweinGalleryPerPage,bweinGalleryPerRow;
                                                                         {grid_legend},grid_columns;
                                                                         {protected_legend:hide},protected;
                                                                         {expert_legend:hide},guests,cssID';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['galleryreader'] = '{title_legend},name,headline,type;
                                                                         {config_legend},bweinGalleryCategories,overviewPage,customLabel;
                                                                         {template_legend:hide},bweinGalleryTemplate,customTpl;
-                                                                        {image_legend:hide},imgSize,fullsize,bweinGalleryPerRow,numberOfItems,perPage;
+                                                                        {image_legend:hide},imgSize,fullsize,bweinGalleryPreviewImage,bweinGalleryNumberOfItems,bweinGalleryPerPage,bweinGalleryPerRow;
                                                                         {grid_legend},grid_columns;
                                                                         {protected_legend:hide},protected;
                                                                         {expert_legend:hide},guests,cssID';
@@ -101,6 +101,20 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['bweinGalleryTemplate'] =
     'options_callback' => static fn () => Controller::getTemplateGroup('album_'),
     'eval' => ['includeBlankOption' => true, 'chosen' => true, 'tl_class' => 'w50'],
     'sql' => "varchar(64) NOT NULL default ''",
+];
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['bweinGalleryNumberOfItems'] = [
+    'exclude' => true,
+    'inputType' => 'text',
+    'eval' => ['mandatory' => true, 'rgxp' => 'natural', 'tl_class' => 'w50 clr'],
+    'sql' => 'smallint(5) unsigned NOT NULL default 3',
+];
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['bweinGalleryPerPage'] = [
+    'exclude' => true,
+    'inputType' => 'text',
+    'eval' => ['rgxp' => 'natural', 'tl_class' => 'w50'],
+    'sql' => 'smallint(5) unsigned NOT NULL default 0',
 ];
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['bweinGalleryPerRow'] =

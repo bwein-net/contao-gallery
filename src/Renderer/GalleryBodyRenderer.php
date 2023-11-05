@@ -42,9 +42,9 @@ class GalleryBodyRenderer
     {
         $imageFiles = $template->imageFiles;
 
-        // Limit the total number of items
-        if ($model->numberOfItems > 0) {
-            $imageFiles = \array_slice($imageFiles, 0, $model->numberOfItems);
+        // Limit the total number of images
+        if ($model->bweinGalleryNumberOfItems > 0) {
+            $imageFiles = \array_slice($imageFiles, 0, $model->bweinGalleryNumberOfItems);
         }
 
         $this->offset = 0;
@@ -166,21 +166,21 @@ class GalleryBodyRenderer
     protected function addPagination(Template $template, ModuleModel $model, GalleryModel $gallery): void
     {
         // Paginate the result if not randomly sorted
-        if ($model->perPage > 0 && 'random' !== $gallery->sortBy) {
+        if ($model->bweinGalleryPerPage > 0 && 'random' !== $gallery->sortBy) {
             // Get the current page
             $id = 'page_g'.$gallery->id;
             $page = (int) (Input::get($id) ?? 1);
 
             // Do not index or cache the page if the page number is outside the range
-            if ($page < 1 || $page > max(ceil($this->total / $model->perPage), 1)) {
+            if ($page < 1 || $page > max(ceil($this->total / $model->bweinGalleryPerPage), 1)) {
                 throw new PageNotFoundException('Page not found: '.Environment::get('uri'));
             }
 
             // Set limit and offset
-            $this->offset = ($page - 1) * $model->perPage;
-            $this->limit = min($model->perPage + $this->offset, $this->total);
+            $this->offset = ($page - 1) * (int) $model->bweinGalleryPerPage;
+            $this->limit = min($model->bweinGalleryPerPage + $this->offset, $this->total);
 
-            $objPagination = new Pagination($this->total, $model->perPage, Config::get('maxPaginationLinks'), $id);
+            $objPagination = new Pagination($this->total, $model->bweinGalleryPerPage, Config::get('maxPaginationLinks'), $id);
             $template->pagination = $objPagination->generate("\n  ");
         }
     }

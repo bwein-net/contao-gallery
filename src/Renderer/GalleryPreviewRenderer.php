@@ -34,7 +34,12 @@ class GalleryPreviewRenderer
         $template->previewFileId = $this->getPreviewImageIdByModuleType($model, $gallery, $imageFiles);
 
         if (null !== $template->previewFileId) {
-            $figureBuilder = $this->studio->createFigureBuilder()->setSize($model->imgSize);
+            $figureBuilder = $this->studio->createFigureBuilder()
+                ->setSize($model->imgSize)
+                ->setLightboxGroupIdentifier('lb'.$gallery->id)
+                ->enableLightbox((bool) $model->fullsize)
+            ;
+
             $template->previewFigure = $figureBuilder
                 ->fromId($template->previewFileId)
                 ->build()

@@ -119,7 +119,6 @@ class GalleryListFrontendModuleController extends AbstractGalleryFrontendModuleC
 
         // Add the galleries
         if (null !== $galleries) {
-            $this->renderer->setIsDetail(false);
             $template->galleries = $this->renderer->renderGalleries($model, $galleries);
         }
 

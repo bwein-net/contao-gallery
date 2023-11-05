@@ -122,13 +122,31 @@
                 <source>for example: col-sm-5</source>
                 <target>Beispiel: col-sm-5</target>
             </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryNumberOfItems.0">
+                <source>Number of gallery images</source>
+                <target>Anzahl an Galerie-Bildern</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryNumberOfItems.1">
+                <source>Here you can limit the total number of gallery images. Set to 0 to show all.</source>
+                <target>Hier können Sie die Gesamtzahl der Galerie-Bilder begrenzen. Geben Sie 0
+                    ein, um alle anzuzeigen.</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryPerPage.0">
+                <source>Gallery images per page</source>
+                <target>Galerie-Bilder pro Seite</target>
+            </trans-unit>
+            <trans-unit id="tl_module.bweinGalleryPerPage.1">
+                <source>The number of gallery images per page. Set to 0 to disable pagination.</source>
+                <target>Die Anzahl an Galerie-Bildern pro Seite. Geben Sie 0 ein, um den
+                    automatischen Seitenumbruch zu deaktivieren.</target>
+            </trans-unit>
             <trans-unit id="tl_module.bweinGalleryPerRow.0">
-                <source>Thumbnails per row</source>
-                <target>Vorschaubilder pro Reihe</target>
+                <source>Gallery images per row</source>
+                <target>Galerie-Bilder pro Reihe</target>
             </trans-unit>
             <trans-unit id="tl_module.bweinGalleryPerRow.1">
-                <source>The number of image thumbnails per row.</source>
-                <target>Die Anzahl an Vorschaubildern pro Reihe.</target>
+                <source>The number of gallery images per row.</source>
+                <target>Die Anzahl an Galerie-Bilder pro Reihe.</target>
             </trans-unit>
         </body>
     </file>

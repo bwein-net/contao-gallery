@@ -45,8 +45,6 @@ class GalleryRenderer
 
     protected ResponseTagger|null $responseTagger;
 
-    protected bool $isDetail = true;
-
     protected bool $isUnsearchable = false;
 
     public function __construct(TranslatorInterface $translator, ContaoFramework $framework, ParameterBagInterface $parameterBag, GalleryBodyRenderer $bodyRenderer, GalleryPreviewRenderer $previewRenderer, GalleryUrlRenderer $urlRenderer, ResponseTagger|null $responseTagger = null)
@@ -72,11 +70,8 @@ class GalleryRenderer
         $this->addGalleryToTemplate($template, $gallery);
         $this->addParamsToTemplate($template, $model, $gallery, $count);
 
-        if ($this->isDetail) {
-            $this->bodyRenderer->renderGalleryBody($template, $model, $gallery);
-        } else {
-            $this->previewRenderer->renderPreview($template, $model, $gallery);
-        }
+        $this->bodyRenderer->renderGalleryBody($template, $model, $gallery);
+        $this->previewRenderer->renderPreview($template, $model, $gallery);
 
         return $template->parse();
     }
@@ -111,11 +106,6 @@ class GalleryRenderer
         }
 
         return $return;
-    }
-
-    public function setIsDetail(bool $isDetail)
-    {
-        return $this->isDetail = $isDetail;
     }
 
     public function isUnsearchable()
