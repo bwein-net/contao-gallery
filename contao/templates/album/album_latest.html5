@@ -14,11 +14,11 @@
     <span class="startDate">
       <?= $this->startDateParsed ?>
     </span>
-    <?php if ($this->endDate): ?>
-        <span class="diff">-</span>
-        <span class="endDate">
-          <?= $this->endDateParsed ?>
-        </span>
+    <?php if ($this->endDate && $this->endDate != $this->startDate): ?>
+      <span class="diff">-</span>
+      <span class="endDate">
+        <?= $this->endDateParsed ?>
+      </span>
     <?php endif; ?>
     <span class="separator">&middot;</span>
     <span class="total">

@@ -1,16 +1,18 @@
 <div class="layout_full block<?= $this->class ?>">
 
-  <h1><?= $this->title ?></h1>
+  <h1>
+    <?= $this->title ?>
+  </h1>
 
   <p class="info">
     <span class="startDate">
       <?= $this->startDateParsed ?>
     </span>
-    <?php if ($this->endDate): ?>
-        <span class="diff">-</span>
-        <span class="endDate">
-          <?= $this->endDateParsed ?>
-        </span>
+    <?php if ($this->endDate && $this->endDate != $this->startDate): ?>
+      <span class="diff">-</span>
+      <span class="endDate">
+        <?= $this->endDateParsed ?>
+      </span>
     <?php endif; ?>
     <span class="separator">&middot;</span>
     <span class="total">
@@ -42,7 +44,7 @@
 
   <?php if ($this->description): ?>
     <div class="ce_text block">
-        <?= $this->description ?>
+      <?= $this->description ?>
     </div>
   <?php endif; ?>
 
@@ -50,21 +52,21 @@
     <!-- indexer::stop -->
     <div class="hide" style="display: none !important;">
       <?php foreach ($this->figuresBefore as $figure): ?>
-          <?php $this->insert('image', $figure->getLegacyTemplateData()) ?>
+        <?php $this->insert('image', $figure->getLegacyTemplateData()) ?>
       <?php endforeach; ?>
     </div>
     <!-- indexer::continue -->
   <?php endif; ?>
 
   <div class="ce_gallery block">
-      <?php $this->insert('gallery_default', $this->arrData); ?>
+    <?php $this->insert('gallery_default', $this->arrData); ?>
   </div>
 
   <?php if ($this->figuresAfter): ?>
     <!-- indexer::stop -->
     <div class="hide" style="display: none !important;">
       <?php foreach ($this->figuresAfter as $figure): ?>
-          <?php $this->insert('image', $figure->getLegacyTemplateData()) ?>
+        <?php $this->insert('image', $figure->getLegacyTemplateData()) ?>
       <?php endforeach; ?>
     </div>
     <!-- indexer::continue -->
