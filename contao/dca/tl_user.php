@@ -23,7 +23,6 @@ PaletteManipulator::create()
 // Add fields to tl_user_group
 $GLOBALS['TL_DCA']['tl_user']['fields']['gallery'] =
 [
-    'exclude' => true,
     'inputType' => 'checkbox',
     'foreignKey' => 'tl_bwein_gallery_category.title',
     'eval' => ['multiple' => true],
@@ -32,7 +31,6 @@ $GLOBALS['TL_DCA']['tl_user']['fields']['gallery'] =
 
 $GLOBALS['TL_DCA']['tl_user']['fields']['galleryp'] =
 [
-    'exclude' => true,
     'inputType' => 'checkbox',
     'options' => ['create', 'delete'],
     'reference' => &$GLOBALS['TL_LANG']['MSC'],

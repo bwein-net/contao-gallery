@@ -62,14 +62,12 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery_category'] =
             'sql' => 'int(10) unsigned NOT NULL default 0',
         ],
         'title' => [
-            'exclude' => true,
             'search' => true,
             'inputType' => 'text',
             'eval' => ['mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'],
             'sql' => "varchar(255) NOT NULL default ''",
         ],
         'jumpTo' => [
-            'exclude' => true,
             'inputType' => 'pageTree',
             'foreignKey' => 'tl_page.title',
             'eval' => ['mandatory' => true, 'fieldType' => 'radio', 'tl_class' => 'clr'],
@@ -77,7 +75,6 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery_category'] =
             'relation' => ['type' => 'hasOne', 'load' => 'lazy'],
         ],
         'protected' => [
-            'exclude' => true,
             'filter' => true,
             'inputType' => 'checkbox',
             'eval' => ['submitOnChange' => true],
@@ -85,7 +82,6 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery_category'] =
             'default' => 0,
         ],
         'groups' => [
-            'exclude' => true,
             'inputType' => 'checkbox',
             'foreignKey' => 'tl_member_group.name',
             'eval' => ['mandatory' => true, 'multiple' => true],

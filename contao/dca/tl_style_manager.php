@@ -28,7 +28,6 @@ if (class_exists(StyleManager::class) || class_exists(StyleManagerV2::class)) {
     $GLOBALS['TL_DCA']['tl_style_manager']['fields']['extendGallery'] =
     [
         'label' => &$GLOBALS['TL_LANG']['tl_style_manager']['extendGallery'],
-        'exclude' => true,
         'filter' => true,
         'inputType' => 'checkbox',
         'eval' => ['tl_class' => 'clr'],

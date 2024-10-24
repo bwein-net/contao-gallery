@@ -90,7 +90,6 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery'] =
             'sql' => 'int(10) unsigned NOT NULL default 0',
         ],
         'title' => [
-            'exclude' => true,
             'search' => true,
             'sorting' => true,
             'flag' => 1,
@@ -99,7 +98,6 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery'] =
             'sql' => "varchar(255) NOT NULL default ''",
         ],
         'featured' => [
-            'exclude' => true,
             'toggle' => true,
             'filter' => true,
             'inputType' => 'checkbox',
@@ -108,7 +106,6 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery'] =
             'default' => 0,
         ],
         'alias' => [
-            'exclude' => true,
             'search' => true,
             'inputType' => 'text',
             'eval' => ['rgxp' => 'alias', 'doNotCopy' => true, 'unique' => true, 'maxlength' => 255, 'tl_class' => 'w50 clr'],
@@ -116,7 +113,6 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery'] =
         ],
         'author' => [
             'default' => BackendUser::getInstance()->id,
-            'exclude' => true,
             'search' => true,
             'filter' => true,
             'sorting' => false,
@@ -129,7 +125,6 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery'] =
         ],
         'startDate' => [
             'default' => time(),
-            'exclude' => true,
             'filter' => true,
             'sorting' => true,
             'flag' => 8,
@@ -138,13 +133,11 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery'] =
             'sql' => 'bigint(20) NULL',
         ],
         'endDate' => [
-            'exclude' => true,
             'inputType' => 'text',
             'eval' => ['rgxp' => 'date', 'doNotCopy' => true, 'datepicker' => true, 'tl_class' => 'w50 wizard'],
             'sql' => 'bigint(20) NULL',
         ],
         'images' => [
-            'exclude' => true,
             'inputType' => 'fileTree',
             'eval' => [
                 'multiple' => true,
@@ -158,7 +151,6 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery'] =
             'sql' => 'blob NULL',
         ],
         'sortBy' => [
-            'exclude' => true,
             'inputType' => 'select',
             'options' => ['name_asc', 'name_desc', 'date_asc', 'date_desc', 'random', 'custom'],
             'reference' => &$GLOBALS['TL_LANG']['tl_content'],
@@ -166,7 +158,6 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery'] =
             'sql' => "varchar(32) COLLATE ascii_bin NOT NULL default ''",
         ],
         'previewImageType' => [
-            'exclude' => true,
             'inputType' => 'select',
             'options' => [
                 'random_preview_image',
@@ -179,7 +170,6 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery'] =
             'sql' => "varchar(64) NOT NULL default ''",
         ],
         'previewImage' => [
-            'exclude' => true,
             'inputType' => 'fileTree',
             'eval' => [
                 'mandatory' => true,
@@ -191,42 +181,36 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery'] =
             'sql' => 'binary(16) NULL',
         ],
         'event' => [
-            'exclude' => true,
             'search' => true,
             'inputType' => 'text',
             'eval' => ['maxlength' => 255, 'tl_class' => 'w50'],
             'sql' => "varchar(255) NOT NULL default ''",
         ],
         'place' => [
-            'exclude' => true,
             'search' => true,
             'inputType' => 'text',
             'eval' => ['maxlength' => 255, 'tl_class' => 'w50'],
             'sql' => "varchar(255) NOT NULL default ''",
         ],
         'photographer' => [
-            'exclude' => true,
             'search' => true,
             'inputType' => 'text',
             'eval' => ['maxlength' => 255, 'tl_class' => 'clr'],
             'sql' => "varchar(255) NOT NULL default ''",
         ],
         'description' => [
-            'exclude' => true,
             'search' => true,
             'inputType' => 'textarea',
             'eval' => ['rte' => 'tinyMCE', 'tl_class' => 'clr'],
             'sql' => 'text NULL',
         ],
         'metaTitle' => [
-            'exclude' => true,
             'search' => true,
             'inputType' => 'text',
             'eval' => ['maxlength' => 255, 'decodeEntities' => true, 'tl_class' => 'w50'],
             'sql' => "varchar(255) NOT NULL default ''",
         ],
         'robots' => [
-            'exclude' => true,
             'search' => true,
             'inputType' => 'select',
             'options' => ['index,follow', 'index,nofollow', 'noindex,follow', 'noindex,nofollow'],
@@ -234,7 +218,6 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery'] =
             'sql' => "varchar(32) NOT NULL default ''",
         ],
         'metaDescription' => [
-            'exclude' => true,
             'search' => true,
             'inputType' => 'textarea',
             'eval' => ['style' => 'height:60px', 'decodeEntities' => true, 'tl_class' => 'clr'],
@@ -242,19 +225,16 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery'] =
         ],
         'serpPreview' => [
             'label' => &$GLOBALS['TL_LANG']['MSC']['serpPreview'],
-            'exclude' => true,
             'inputType' => 'serpPreview',
             'eval' => ['titleFields' => ['metaTitle', 'title'], 'descriptionFields' => ['metaDescription', 'description']],
             'sql' => null,
         ],
         'cssClass' => [
-            'exclude' => true,
             'inputType' => 'text',
             'eval' => ['tl_class' => 'w50'],
             'sql' => "varchar(255) NOT NULL default ''",
         ],
         'published' => [
-            'exclude' => true,
             'toggle' => true,
             'filter' => true,
             'flag' => 1,
@@ -264,13 +244,11 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery'] =
             'default' => 0,
         ],
         'start' => [
-            'exclude' => true,
             'inputType' => 'text',
             'eval' => ['rgxp' => 'datim', 'datepicker' => true, 'tl_class' => 'w50 wizard'],
             'sql' => "varchar(10) NOT NULL default ''",
         ],
         'stop' => [
-            'exclude' => true,
             'inputType' => 'text',
             'eval' => ['rgxp' => 'datim', 'datepicker' => true, 'tl_class' => 'w50 wizard'],
             'sql' => "varchar(10) NOT NULL default ''",
@@ -286,7 +264,6 @@ if (class_exists(StyleManager::class) || class_exists(StyleManagerV2::class)) {
     ;
 
     $GLOBALS['TL_DCA']['tl_bwein_gallery']['fields']['styleManager'] = [
-        'exclude' => true,
         'inputType' => 'stylemanager',
         'eval' => ['tl_class' => 'clr stylemanager'],
         'sql' => 'blob NULL',

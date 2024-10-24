@@ -32,7 +32,6 @@ $GLOBALS['TL_DCA']['tl_module']['palettes']['galleryreader'] = '{title_legend},n
 // Add fields to tl_module
 $GLOBALS['TL_DCA']['tl_module']['fields']['bweinGalleryCategories'] =
 [
-    'exclude' => true,
     'inputType' => 'checkbox',
     'eval' => ['multiple' => true, 'mandatory' => true],
     'sql' => 'blob NULL',
@@ -40,7 +39,6 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['bweinGalleryCategories'] =
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['bweinGalleryListFeatured'] =
 [
-    'exclude' => true,
     'inputType' => 'select',
     'options' => [
         'all_galleries',
@@ -55,7 +53,6 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['bweinGalleryListFeatured'] =
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['bweinGalleryListOrder'] =
 [
-    'exclude' => true,
     'inputType' => 'select',
     'options' => [
         'order_date_asc',
@@ -70,7 +67,6 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['bweinGalleryListOrder'] =
 ];
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['bweinGalleryPreviewImage'] = [
-    'exclude' => true,
     'inputType' => 'select',
     'options' => [
         'use_album_options',
@@ -87,7 +83,6 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['bweinGalleryPreviewImage'] = [
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['bweinGalleryReaderModule'] =
 [
-    'exclude' => true,
     'inputType' => 'select',
     'reference' => &$GLOBALS['TL_LANG']['tl_module'],
     'eval' => ['includeBlankOption' => true, 'tl_class' => 'w50'],
@@ -96,7 +91,6 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['bweinGalleryReaderModule'] =
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['bweinGalleryTemplate'] =
 [
-    'exclude' => true,
     'inputType' => 'select',
     'options_callback' => static fn () => Controller::getTemplateGroup('album_'),
     'eval' => ['includeBlankOption' => true, 'chosen' => true, 'tl_class' => 'w50'],
@@ -104,14 +98,12 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['bweinGalleryTemplate'] =
 ];
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['bweinGalleryNumberOfItems'] = [
-    'exclude' => true,
     'inputType' => 'text',
     'eval' => ['mandatory' => true, 'rgxp' => 'natural', 'tl_class' => 'w50 clr'],
     'sql' => 'smallint(5) unsigned NOT NULL default 3',
 ];
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['bweinGalleryPerPage'] = [
-    'exclude' => true,
     'inputType' => 'text',
     'eval' => ['rgxp' => 'natural', 'tl_class' => 'w50'],
     'sql' => 'smallint(5) unsigned NOT NULL default 0',
@@ -119,7 +111,6 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['bweinGalleryPerPage'] = [
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['bweinGalleryPerRow'] =
 [
-    'exclude' => true,
     'inputType' => 'select',
     'options' => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     'eval' => ['tl_class' => 'w50'],
@@ -129,7 +120,6 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['bweinGalleryPerRow'] =
 if (class_exists('GridClass') || class_exists(GridColsOptionsListener::class)) {
     $GLOBALS['TL_DCA']['tl_module']['fields']['grid_columns'] =
     [
-        'exclude' => true,
         'search' => true,
         'inputType' => 'select',
         'options_callback' => class_exists(GridColsOptionsListener::class) ? [GridColsOptionsListener::class, method_exists(GridColsOptionsListener::class, 'onOptionsCallback') ? 'onOptionsCallback' : '__invoke'] : ['GridClass', 'getGridCols'],
