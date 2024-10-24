@@ -100,13 +100,13 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['bweinGalleryTemplate'] =
 $GLOBALS['TL_DCA']['tl_module']['fields']['bweinGalleryNumberOfItems'] = [
     'inputType' => 'text',
     'eval' => ['mandatory' => true, 'rgxp' => 'natural', 'tl_class' => 'w50 clr'],
-    'sql' => 'smallint(5) unsigned NOT NULL default 3',
+    'sql' => 'smallint(5) unsigned NOT NULL default 0',
 ];
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['bweinGalleryPerPage'] = [
     'inputType' => 'text',
     'eval' => ['rgxp' => 'natural', 'tl_class' => 'w50'],
-    'sql' => 'smallint(5) unsigned NOT NULL default 0',
+    'sql' => 'smallint(5) unsigned NOT NULL default 16',
 ];
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['bweinGalleryPerRow'] =
