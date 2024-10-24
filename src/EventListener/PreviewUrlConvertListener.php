@@ -13,27 +13,23 @@ declare(strict_types=1);
 namespace Bwein\Gallery\EventListener;
 
 use Bwein\Gallery\Model\GalleryModel;
-use Bwein\Gallery\Renderer\GalleryUrlRenderer;
 use Contao\CoreBundle\Event\PreviewUrlConvertEvent;
 use Contao\CoreBundle\Framework\ContaoFramework;
+use Contao\CoreBundle\Routing\ContentUrlGenerator;
+use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use Symfony\Component\HttpFoundation\Request;
-use Terminal42\ServiceAnnotationBundle\Annotation\ServiceTag;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * @internal
- *
- * @ServiceTag("kernel.event_listener")
  */
+#[AsEventListener]
 class PreviewUrlConvertListener
 {
-    private ContaoFramework $framework;
-
-    private GalleryUrlRenderer $urlRenderer;
-
-    public function __construct(ContaoFramework $framework, GalleryUrlRenderer $urlRenderer)
-    {
-        $this->framework = $framework;
-        $this->urlRenderer = $urlRenderer;
+    public function __construct(
+        private readonly ContaoFramework $framework,
+        private readonly ContentUrlGenerator $urlGenerator,
+    ) {
     }
 
     /**
@@ -47,13 +43,11 @@ class PreviewUrlConvertListener
             return;
         }
 
-        $request = $event->getRequest();
-
-        if (null === $request || null === ($gallery = $this->getGalleryModel($request))) {
+        if (!$gallery = $this->getGalleryModel($event->getRequest())) {
             return;
         }
 
-        $event->setUrl($request->getSchemeAndHttpHost().'/'.$this->urlRenderer->generateGalleryUrl($gallery));
+        $event->setUrl($this->urlGenerator->generate($gallery, [], UrlGeneratorInterface::ABSOLUTE_URL));
     }
 
     private function getGalleryModel(Request $request): GalleryModel|null
@@ -65,6 +59,6 @@ class PreviewUrlConvertListener
         /** @var GalleryModel $adapter */
         $adapter = $this->framework->getAdapter(GalleryModel::class);
 
-        return $adapter->findByPk($request->query->get('gallery'));
+        return $adapter->findById($request->query->get('gallery'));
     }
 }

@@ -15,25 +15,20 @@ namespace Bwein\Gallery\EventListener;
 use Bwein\Gallery\Model\GalleryModel;
 use Contao\CoreBundle\Event\PreviewUrlCreateEvent;
 use Contao\CoreBundle\Framework\ContaoFramework;
+use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Terminal42\ServiceAnnotationBundle\Annotation\ServiceTag;
 
 /**
  * @internal
- *
- * @ServiceTag("kernel.event_listener")
  */
+#[AsEventListener]
 class PreviewUrlCreateListener
 {
-    private RequestStack $requestStack;
-
-    private ContaoFramework $framework;
-
-    public function __construct(RequestStack $requestStack, ContaoFramework $framework)
-    {
-        $this->requestStack = $requestStack;
-        $this->framework = $framework;
+    public function __construct(
+        private readonly RequestStack $requestStack,
+        private readonly ContaoFramework $framework,
+    ) {
     }
 
     /**
@@ -47,9 +42,7 @@ class PreviewUrlCreateListener
             return;
         }
 
-        $request = $this->requestStack->getCurrentRequest();
-
-        if (null === $request) {
+        if (!$request = $this->requestStack->getCurrentRequest()) {
             throw new \RuntimeException('The request stack did not contain a request');
         }
 
@@ -58,7 +51,7 @@ class PreviewUrlCreateListener
             return;
         }
 
-        if (null === ($galleryModel = $this->getGalleryModel($this->getId($event, $request)))) {
+        if ((!$id = $this->getId($event, $request)) || (!$galleryModel = $this->getGalleryModel($id))) {
             return;
         }
 
@@ -86,6 +79,6 @@ class PreviewUrlCreateListener
         /** @var GalleryModel $adapter */
         $adapter = $this->framework->getAdapter(GalleryModel::class);
 
-        return $adapter->findByPk($id);
+        return $adapter->findById($id);
     }
 }

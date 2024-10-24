@@ -14,12 +14,12 @@ namespace Bwein\Gallery\EventListener\DataContainer;
 
 use Bwein\Gallery\Model\GalleryCategoryModel;
 use Bwein\Gallery\Model\GalleryModel;
-use Bwein\Gallery\Renderer\GalleryUrlRenderer;
 use Contao\BackendUser;
 use Contao\Config;
 use Contao\CoreBundle\DataContainer\PaletteManipulator;
 use Contao\CoreBundle\Exception\AccessDeniedException;
 use Contao\CoreBundle\Framework\ContaoFramework;
+use Contao\CoreBundle\Routing\ContentUrlGenerator;
 use Contao\CoreBundle\ServiceAnnotation\Callback;
 use Contao\CoreBundle\Slug\Slug;
 use Contao\Database;
@@ -28,6 +28,7 @@ use Contao\Date;
 use Contao\Input;
 use Contao\PageModel;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
@@ -35,23 +36,13 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class GalleryListener
 {
-    private $requestStack;
-
-    private TranslatorInterface $translator;
-
-    private ContaoFramework $framework;
-
-    private Slug $slug;
-
-    private GalleryUrlRenderer $urlRenderer;
-
-    public function __construct(RequestStack $requestStack, TranslatorInterface $translator, ContaoFramework $framework, Slug $slug, GalleryUrlRenderer $urlRenderer)
-    {
-        $this->requestStack = $requestStack;
-        $this->translator = $translator;
-        $this->framework = $framework;
-        $this->slug = $slug;
-        $this->urlRenderer = $urlRenderer;
+    public function __construct(
+        private readonly RequestStack $requestStack,
+        private readonly TranslatorInterface $translator,
+        private readonly ContaoFramework $framework,
+        private readonly Slug $slug,
+        private readonly ContentUrlGenerator $urlGenerator,
+    ) {
     }
 
     /**
@@ -199,9 +190,9 @@ class GalleryListener
 
         // Generate alias if there is none
         if ('' === (string) $value) {
-            $value = $this->slug->generate($dc->activeRecord->title, GalleryCategoryModel::findByPk($dc->activeRecord->pid)->jumpTo, $aliasExists);
+            $value = $this->slug->generate($dc->activeRecord->title, GalleryCategoryModel::findById($dc->activeRecord->pid)->jumpTo, $aliasExists);
         } elseif ($aliasExists($value)) {
-            throw new \Exception(sprintf($this->translator->trans('ERR.aliasExists', [], 'contao_default'), $value));
+            throw new \Exception(\sprintf($this->translator->trans('ERR.aliasExists', [], 'contao_default'), $value));
         }
 
         return (string) $value;
@@ -227,7 +218,8 @@ class GalleryListener
      */
     public function adjustTime(DataContainer $dataContainer): void
     {
-        // Return if there is no active record (override all) or no start date has been set yet
+        // Return if there is no active record (override all) or no start date has been
+        // set yet
         if (!$dataContainer->activeRecord || !$dataContainer->activeRecord->startDate) {
             return;
         }
@@ -251,7 +243,7 @@ class GalleryListener
      */
     public function getSerpUrl(GalleryModel $model): string
     {
-        return $this->urlRenderer->generateGalleryUrl($model, true);
+        return $this->urlGenerator->generate($model, [], UrlGeneratorInterface::ABSOLUTE_URL);
     }
 
     /**
@@ -267,7 +259,7 @@ class GalleryListener
      */
     public function addSitemapCacheInvalidationTag(DataContainer $dataContainer, array $tags)
     {
-        $category = GalleryCategoryModel::findByPk($dataContainer->activeRecord->pid);
+        $category = GalleryCategoryModel::findById($dataContainer->activeRecord->pid);
 
         if (null === $category) {
             return $tags;

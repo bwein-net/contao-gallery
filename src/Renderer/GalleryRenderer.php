@@ -14,6 +14,7 @@ namespace Bwein\Gallery\Renderer;
 
 use Bwein\Gallery\Model\GalleryModel;
 use Contao\CoreBundle\Framework\ContaoFramework;
+use Contao\CoreBundle\Routing\ContentUrlGenerator;
 use Contao\Date;
 use Contao\File;
 use Contao\FilesModel;
@@ -31,31 +32,17 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class GalleryRenderer
 {
-    protected TranslatorInterface $translator;
-
-    protected ContaoFramework $framework;
-
-    protected ParameterBagInterface $parameterBag;
-
-    protected GalleryBodyRenderer $bodyRenderer;
-
-    protected GalleryPreviewRenderer $previewRenderer;
-
-    protected GalleryUrlRenderer $urlRenderer;
-
-    protected ResponseTagger|null $responseTagger;
-
     protected bool $isUnsearchable = false;
 
-    public function __construct(TranslatorInterface $translator, ContaoFramework $framework, ParameterBagInterface $parameterBag, GalleryBodyRenderer $bodyRenderer, GalleryPreviewRenderer $previewRenderer, GalleryUrlRenderer $urlRenderer, ResponseTagger|null $responseTagger = null)
-    {
-        $this->translator = $translator;
-        $this->framework = $framework;
-        $this->parameterBag = $parameterBag;
-        $this->bodyRenderer = $bodyRenderer;
-        $this->previewRenderer = $previewRenderer;
-        $this->urlRenderer = $urlRenderer;
-        $this->responseTagger = $responseTagger;
+    public function __construct(
+        protected readonly TranslatorInterface $translator,
+        protected readonly ContaoFramework $framework,
+        protected readonly ParameterBagInterface $parameterBag,
+        protected readonly GalleryBodyRenderer $bodyRenderer,
+        protected readonly GalleryPreviewRenderer $previewRenderer,
+        protected readonly ContentUrlGenerator $urlGenerator,
+        protected readonly ResponseTagger|null $responseTagger = null,
+    ) {
     }
 
     /**
@@ -140,7 +127,7 @@ class GalleryRenderer
 
         $template->linkTitle = $this->generateLink($gallery->title, $gallery);
         $template->more = $this->generateLink($this->translator->trans('MSC.more', [], 'contao_default'), $gallery, true);
-        $template->link = $this->urlRenderer->generateGalleryUrl($gallery);
+        $template->link = $this->urlGenerator->generate($gallery, []);
         $template->category = $gallery->getRelated('pid');
         $template->startDateParsed = Date::parse($objPage->dateFormat, $gallery->startDate);
         $template->endDateParsed = Date::parse($objPage->dateFormat, $gallery->endDate);
@@ -287,10 +274,10 @@ class GalleryRenderer
      */
     protected function generateLink(string $link, GalleryModel $gallery, bool $isReadMore = false): string
     {
-        return sprintf(
+        return \sprintf(
             '<a href="%s" title="%s">%s%s</a>',
-            $this->urlRenderer->generateGalleryUrl($gallery),
-            StringUtil::specialchars(sprintf($this->translator->trans('MSC.readMore', [], 'contao_default'), $gallery->title), true),
+            $this->urlGenerator->generate($gallery, []),
+            StringUtil::specialchars(\sprintf($this->translator->trans('MSC.readMore', [], 'contao_default'), $gallery->title), true),
             $link,
             $isReadMore ? '<span class="invisible"> '.$gallery->title.'</span>' : '',
         );
