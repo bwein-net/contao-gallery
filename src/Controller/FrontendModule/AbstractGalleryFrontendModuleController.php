@@ -29,20 +29,12 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 abstract class AbstractGalleryFrontendModuleController extends AbstractFrontendModuleController
 {
-    protected TranslatorInterface $translator;
-
-    protected TokenChecker $tokenChecker;
-
-    protected ContaoFramework $framework;
-
-    protected GalleryRenderer $renderer;
-
-    public function __construct(TranslatorInterface $translator, TokenChecker $tokenChecker, ContaoFramework $framework, GalleryRenderer $renderer)
-    {
-        $this->translator = $translator;
-        $this->tokenChecker = $tokenChecker;
-        $this->framework = $framework;
-        $this->renderer = $renderer;
+    public function __construct(
+        protected readonly TranslatorInterface $translator,
+        protected readonly TokenChecker $tokenChecker,
+        protected readonly ContaoFramework $framework,
+        protected readonly GalleryRenderer $renderer,
+    ) {
     }
 
     abstract protected function addParamsToTemplate(Template $template, ModuleModel $model, Request $request): void;

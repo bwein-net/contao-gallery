@@ -14,36 +14,32 @@ namespace Bwein\Gallery\Picker;
 
 use Bwein\Gallery\Model\GalleryCategoryModel;
 use Bwein\Gallery\Model\GalleryModel;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsPickerProvider;
 use Contao\CoreBundle\Framework\FrameworkAwareInterface;
 use Contao\CoreBundle\Framework\FrameworkAwareTrait;
 use Contao\CoreBundle\Picker\AbstractInsertTagPickerProvider;
 use Contao\CoreBundle\Picker\DcaPickerProviderInterface;
 use Contao\CoreBundle\Picker\PickerConfig;
 use Knp\Menu\FactoryInterface;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Routing\RouterInterface;
-use Symfony\Component\Security\Core\Security;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-/**
- * Class GalleryPickerProvider.
- */
+#[AsPickerProvider(priority: 64)]
 class GalleryPickerProvider extends AbstractInsertTagPickerProvider implements DcaPickerProviderInterface, FrameworkAwareInterface
 {
     use FrameworkAwareTrait;
 
     /**
-     * @var Security
-     */
-    private $security;
-
-    /**
      * @internal Do not inherit from this class; decorate the "contao_gallery.picker.gallery_provider" service instead
      */
-    public function __construct(FactoryInterface $menuFactory, RouterInterface $router, TranslatorInterface|null $translator, Security $security)
-    {
+    public function __construct(
+        FactoryInterface $menuFactory,
+        RouterInterface $router,
+        TranslatorInterface|null $translator,
+        private readonly Security $security,
+    ) {
         parent::__construct($menuFactory, $router, $translator);
-
-        $this->security = $security;
     }
 
     public function getName(): string
@@ -70,12 +66,12 @@ class GalleryPickerProvider extends AbstractInsertTagPickerProvider implements D
     {
         $attributes = ['fieldType' => 'radio'];
 
-        if ($source = $config->getExtra('source')) {
-            $attributes['preserveRecord'] = $source;
-        }
-
         if ($this->supportsValue($config)) {
             $attributes['value'] = $this->getInsertTagValue($config);
+
+            if ($flags = $this->getInsertTagFlags($config)) {
+                $attributes['flags'] = $flags;
+            }
         }
 
         return $attributes;
@@ -83,14 +79,14 @@ class GalleryPickerProvider extends AbstractInsertTagPickerProvider implements D
 
     public function convertDcaValue(PickerConfig $config, $value): string
     {
-        return sprintf($this->getInsertTag($config), $value);
+        return \sprintf($this->getInsertTag($config), $value);
     }
 
     protected function getRouteParameters(PickerConfig|null $config = null): array
     {
         $params = ['do' => 'gallery'];
 
-        if (null === $config || !$config->getValue() || !$this->supportsValue($config)) {
+        if (!$config?->getValue() || !$this->supportsValue($config)) {
             return $params;
         }
 
@@ -108,20 +104,18 @@ class GalleryPickerProvider extends AbstractInsertTagPickerProvider implements D
     }
 
     /**
-     * @param int|string $id
-     *
      * @throws \Exception
      */
-    private function getGalleryCategoryId($id): int|null
+    private function getGalleryCategoryId(int|string $id): int|null
     {
         /** @var GalleryModel $galleryAdapter */
         $galleryAdapter = $this->framework->getAdapter(GalleryModel::class);
 
-        if (!($galleryModel = $galleryAdapter->findById($id)) instanceof GalleryModel) {
+        if (!$galleryModel = $galleryAdapter->findById($id)) {
             return null;
         }
 
-        if (!($gallerycategory = $galleryModel->getRelated('pid')) instanceof GalleryCategoryModel) {
+        if (!$gallerycategory = $this->framework->getAdapter(GalleryCategoryModel::class)->findById($galleryModel->pid)) {
             return null;
         }
 

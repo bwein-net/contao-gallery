@@ -25,17 +25,14 @@ use Contao\Template;
 
 class GalleryBodyRenderer
 {
-    protected Studio $studio;
-
     private int $offset = 0;
 
     private int $total = 0;
 
     private int $limit = 0;
 
-    public function __construct(Studio $studio)
+    public function __construct(protected readonly Studio $studio)
     {
-        $this->studio = $studio;
     }
 
     public function renderGalleryBody(Template $template, ModuleModel $model, GalleryModel $gallery): void

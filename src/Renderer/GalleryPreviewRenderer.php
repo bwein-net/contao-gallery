@@ -21,11 +21,8 @@ use Contao\Template;
 
 class GalleryPreviewRenderer
 {
-    protected Studio $studio;
-
-    public function __construct(Studio $studio)
+    public function __construct(protected readonly Studio $studio)
     {
-        $this->studio = $studio;
     }
 
     public function renderPreview(Template $template, ModuleModel $model, GalleryModel $gallery): void

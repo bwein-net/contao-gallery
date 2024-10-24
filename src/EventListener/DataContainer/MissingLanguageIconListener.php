@@ -19,15 +19,12 @@ use Terminal42\ChangeLanguage\Helper\LabelCallback;
 
 class MissingLanguageIconListener
 {
-    private TranslatorInterface $translator;
-
     private static array $callbacks = [
         'tl_bwein_gallery' => 'onGalleryRecords',
     ];
 
-    public function __construct(TranslatorInterface $translator)
+    public function __construct(private readonly TranslatorInterface $translator)
     {
-        $this->translator = $translator;
     }
 
     /**
@@ -51,12 +48,12 @@ class MissingLanguageIconListener
         $row = $args[0];
         $label = (string) $previousResult;
 
-        $archive = GalleryCategoryModel::findByPk($row['pid']);
+        $archive = GalleryCategoryModel::findById($row['pid']);
 
         if (
             null !== $archive
             && $archive->master
-            && (!$row['languageMain'] || null === GalleryModel::findByPk($row['languageMain']))
+            && (!$row['languageMain'] || null === GalleryModel::findById($row['languageMain']))
         ) {
             return $this->generateLabelWithWarning($label);
         }
@@ -66,7 +63,7 @@ class MissingLanguageIconListener
 
     private function generateLabelWithWarning(string $label, string $imgStyle = ''): string
     {
-        return $label.sprintf(
+        return $label.\sprintf(
             '<span style="padding-left:3px"><img src="%s" alt="%s" title="%s" style="%s"></span>',
             'bundles/terminal42changelanguage/language-warning.png',
             $this->translator->trans('MSC.noMainLanguage', [], 'contao_default'),

@@ -17,11 +17,8 @@ use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class BackendAssetsListener
 {
-    protected ScopeMatcher $scopeMatcher;
-
-    public function __construct(ScopeMatcher $scopeMatcher)
+    public function __construct(protected readonly ScopeMatcher $scopeMatcher)
     {
-        $this->scopeMatcher = $scopeMatcher;
     }
 
     public function onKernelRequest(RequestEvent $e): void

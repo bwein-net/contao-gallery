@@ -12,15 +12,13 @@ declare(strict_types=1);
 
 namespace Bwein\Gallery\EventListener;
 
-use Contao\CoreBundle\ServiceAnnotation\Hook;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;
 use Contao\Model\Collection;
 use Contao\StringUtil;
 use Oveleon\ContaoComponentStyleManager\StyleManagerModel;
 use Oveleon\ContaoComponentStyleManager\StyleManagerModel as StyleManagerV2Model;
 
-/**
- * @Hook("styleManagerSkipField")
- */
+#[AsHook('styleManagerSkipField')]
 class StyleManagerSkipFieldListener
 {
     /**

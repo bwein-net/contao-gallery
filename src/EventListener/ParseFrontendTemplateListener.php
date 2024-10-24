@@ -13,16 +13,14 @@ declare(strict_types=1);
 namespace Bwein\Gallery\EventListener;
 
 use Bwein\Gallery\Model\GalleryModel;
-use Contao\CoreBundle\ServiceAnnotation\Hook;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;
 use Contao\Image;
 use Contao\System;
 use MadeYourDay\RockSolidFrontendHelper\FrontendHooks;
 
 class ParseFrontendTemplateListener extends FrontendHooks
 {
-    /**
-     * @Hook("parseFrontendTemplate")
-     */
+    #[AsHook('parseFrontendTemplate')]
     public function __invoke(string $buffer, string $template): string
     {
         if (!$template || !class_exists(FrontendHooks::class) || !($permissions = FrontendHooks::checkLogin())) {
@@ -43,7 +41,7 @@ class ParseFrontendTemplateListener extends FrontendHooks
                     System::loadLanguageFile('tl_bwein_gallery');
                     $data['links']['be-module'] = [
                         'url' => FrontendHooks::getBackendURL('gallery', 'tl_bwein_gallery', $matches2[2]),
-                        'label' => sprintf(\is_array($GLOBALS['TL_LANG']['tl_bwein_gallery']['edit']) ? $GLOBALS['TL_LANG']['tl_bwein_gallery']['edit'][1] : $GLOBALS['TL_LANG']['tl_bwein_gallery']['edit'], $matches2[2]),
+                        'label' => \sprintf(\is_array($GLOBALS['TL_LANG']['tl_bwein_gallery']['edit']) ? $GLOBALS['TL_LANG']['tl_bwein_gallery']['edit'][1] : $GLOBALS['TL_LANG']['tl_bwein_gallery']['edit'], $matches2[2]),
                         'icon' => Image::getPath('bundles/bweingallery/icons/gallery.svg'),
                     ];
                 }

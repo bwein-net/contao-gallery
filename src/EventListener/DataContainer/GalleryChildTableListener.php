@@ -38,7 +38,7 @@ class GalleryChildTableListener extends AbstractChildTableListener
         $options = [];
 
         foreach ($models as $model) {
-            $options[$model->id] = sprintf('%s [ID %s]', $model->title, $model->id);
+            $options[$model->id] = \sprintf('%s [ID %s]', $model->title, $model->id);
         }
 
         return $options;

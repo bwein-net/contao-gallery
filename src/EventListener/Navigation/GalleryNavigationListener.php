@@ -14,13 +14,11 @@ namespace Bwein\Gallery\EventListener\Navigation;
 
 use Bwein\Gallery\Model\GalleryCategoryModel;
 use Bwein\Gallery\Model\GalleryModel;
-use Contao\CoreBundle\ServiceAnnotation\Hook;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;
 use Contao\PageModel;
 use Terminal42\ChangeLanguage\EventListener\Navigation\AbstractNavigationListener;
 
-/**
- * @Hook("changelanguageNavigation")
- */
+#[AsHook('changelanguageNavigation')]
 class GalleryNavigationListener extends AbstractNavigationListener
 {
     protected function getUrlKey(): string

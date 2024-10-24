@@ -33,24 +33,17 @@ use Symfony\Component\Security\Core\Security;
  */
 class GalleryCategoryListener
 {
-    private RequestStack $requestStack;
-
-    private ContaoFramework $framework;
-
-    private Security $security;
-
-    public function __construct(RequestStack $requestStack, ContaoFramework $framework, Security $security)
-    {
-        $this->requestStack = $requestStack;
-        $this->framework = $framework;
-        $this->security = $security;
+    public function __construct(
+        private readonly RequestStack $requestStack,
+        private readonly ContaoFramework $framework,
+        private readonly Security $security,
+    ) {
     }
 
     /**
-     * @Callback(table="tl_bwein_gallery_category", target="config.onload")
-     *
      * @throws AccessDeniedException
      */
+    #[AsCallback('tl_bwein_gallery_category', target: 'config.onload')]
     public function checkPermission(DataContainer|null $dc = null): void
     {
         /** @var BackendUser $backendUser */
@@ -130,9 +123,7 @@ class GalleryCategoryListener
         }
     }
 
-    /**
-     * @Callback(table="tl_bwein_gallery_category", target="config.oncreate")
-     */
+    #[AsCallback('tl_bwein_gallery_category', target: 'config.oncreate')]
     public function adjustPermissionsCreate(string $table, int $insertId, array $row, DataContainer $dataContainer): void
     {
         $this->adjustPermissions($insertId, $dataContainer);
@@ -141,6 +132,7 @@ class GalleryCategoryListener
     /**
      * @Callback(table="tl_bwein_gallery_category", target="config.oncreate")
      */
+    #[AsCallback('tl_bwein_gallery_category', target: 'config.oncreate')]
     public function adjustPermissionsCopy(string $table, int $insertId, array $row, DataContainer $dataContainer): void
     {
         $this->adjustPermissions($insertId, $dataContainer);

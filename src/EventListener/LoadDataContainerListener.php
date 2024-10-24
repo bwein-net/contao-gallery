@@ -14,25 +14,19 @@ namespace Bwein\Gallery\EventListener;
 
 use Bwein\Gallery\EventListener\DataContainer\GalleryChildTableListener;
 use Bwein\Gallery\EventListener\DataContainer\MissingLanguageIconListener;
-use Contao\CoreBundle\ServiceAnnotation\Hook;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Terminal42\ChangeLanguage\EventListener\BackendView\ParentChildViewListener;
 use Terminal42\ChangeLanguage\EventListener\DataContainer\ParentTableListener;
 
-/**
- * @Hook("loadDataContainer")
- */
+#[AsHook('loadDataContainer')]
 class LoadDataContainerListener
 {
-    private TranslatorInterface $translator;
-
-    private ParameterBagInterface $params;
-
-    public function __construct(TranslatorInterface $translator, ParameterBagInterface $params)
-    {
-        $this->translator = $translator;
-        $this->params = $params;
+    public function __construct(
+        private TranslatorInterface $translator,
+        private ParameterBagInterface $params,
+    ) {
     }
 
     public function __invoke(string $table): void

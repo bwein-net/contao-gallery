@@ -12,14 +12,12 @@ declare(strict_types=1);
 
 namespace Bwein\Gallery\EventListener;
 
-use Contao\CoreBundle\ServiceAnnotation\Hook;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;
 use Contao\Model\Collection;
 use Oveleon\ContaoComponentStyleManager\Model\StyleManagerModel;
 use Oveleon\ContaoComponentStyleManager\StyleManagerModel as StyleManagerV2Model;
 
-/**
- * @Hook("styleManagerFindByTable")
- */
+#[AsHook('styleManagerFindByTable')]
 class StyleManagerFindByTableListener
 {
     /**

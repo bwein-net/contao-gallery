@@ -24,14 +24,11 @@ use Contao\DataContainer;
  */
 class ModuleListener
 {
-    private ContaoFramework $framework;
-
     /**
      * Import the back end user object.
      */
-    public function __construct(ContaoFramework $framework)
+    public function __construct(private readonly ContaoFramework $framework)
     {
-        $this->framework = $framework;
     }
 
     /**
