@@ -13,85 +13,72 @@ declare(strict_types=1);
 namespace Bwein\Gallery\EventListener;
 
 use Bwein\Gallery\Model\GalleryModel;
-use Bwein\Gallery\Renderer\GalleryUrlRenderer;
-use Contao\CoreBundle\Framework\FrameworkAwareInterface;
-use Contao\CoreBundle\Framework\FrameworkAwareTrait;
-use Contao\CoreBundle\ServiceAnnotation\Hook;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsInsertTag;
+use Contao\CoreBundle\Framework\ContaoFramework;
+use Contao\CoreBundle\InsertTag\InsertTagResult;
+use Contao\CoreBundle\InsertTag\OutputType;
+use Contao\CoreBundle\InsertTag\ResolvedInsertTag;
+use Contao\CoreBundle\InsertTag\Resolver\InsertTagResolverNestedResolvedInterface;
+use Contao\CoreBundle\Routing\ContentUrlGenerator;
 use Contao\StringUtil;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-/**
- * @Hook("replaceInsertTags")
- */
-class InsertTagsListener implements FrameworkAwareInterface
+#[AsInsertTag('gallery')]
+#[AsInsertTag('gallery_open')]
+#[AsInsertTag('gallery_url')]
+#[AsInsertTag('gallery_title')]
+class InsertTagsListener implements InsertTagResolverNestedResolvedInterface
 {
-    use FrameworkAwareTrait;
-
-    private const SUPPORTED_TAGS = [
-        'gallery',
-        'gallery_open',
-        'gallery_url',
-        'gallery_title',
-    ];
-
-    private GalleryUrlRenderer $urlRenderer;
-
-    public function __invoke(string $insertTag, bool $useCache, string $cachedValue, array $flags, array $tags, array $cache, int $_rit, int $_cnt)
-    {
-        $elements = explode('::', $insertTag);
-        $key = strtolower($elements[0]);
-
-        if (\in_array($key, self::SUPPORTED_TAGS, true)) {
-            return $this->replaceGalleryInsertTags($key, $elements[1], $flags);
-        }
-
-        return false;
+    public function __construct(
+        private readonly ContaoFramework $framework,
+        private readonly ContentUrlGenerator $urlGenerator,
+    ) {
     }
 
-    /**
-     * @internal
-     *
-     * @required
-     */
-    public function setUrlRenderer(GalleryUrlRenderer $urlRenderer): void
-    {
-        $this->urlRenderer = $urlRenderer;
-    }
-
-    private function replaceGalleryInsertTags(string $insertTag, string $idOrAlias, array $flags): string
+    public function __invoke(ResolvedInsertTag $insertTag): InsertTagResult
     {
         $this->framework->initialize();
 
+        $arguments = \array_slice($insertTag->getParameters()->all(), 1);
         /** @var GalleryModel $adapter */
-        $galleryModel = $this->framework->getAdapter(GalleryModel::class);
-        $gallery = $galleryModel->findByIdOrAlias($idOrAlias);
+        $adapter = $this->framework->getAdapter(GalleryModel::class);
 
-        if (null === $gallery) {
+        if (!$model = $adapter->findByIdOrAlias($insertTag->getParameters()->get(0))) {
+            return new InsertTagResult('');
+        }
+
+        return match ($insertTag->getName()) {
+            'gallery' => new InsertTagResult(
+                \sprintf(
+                    '<a href="%s" title="%s"%s>%s</a>',
+                    StringUtil::specialcharsAttribute($this->generateGalleryUrl($model, $arguments)),
+                    StringUtil::specialcharsAttribute($model->title),
+                    \in_array('blank', $arguments, true) ? ' target="_blank" rel="noreferrer noopener"' : '',
+                    $model->title,
+                ),
+                OutputType::html,
+            ),
+            'gallery_open' => new InsertTagResult(
+                \sprintf(
+                    '<a href="%s" title="%s"%s>',
+                    StringUtil::specialcharsAttribute($this->generateGalleryUrl($model, $arguments)),
+                    StringUtil::specialcharsAttribute($model->title),
+                    \in_array('blank', $arguments, true) ? ' target="_blank" rel="noreferrer noopener"' : '',
+                ),
+                OutputType::html,
+            ),
+            'gallery_url' => new InsertTagResult($this->generateGalleryUrl($model, $arguments), OutputType::url),
+            'news_title' => new InsertTagResult($model->title),
+            default => new InsertTagResult(''),
+        };
+    }
+
+    private function generateGalleryUrl(GalleryModel $model, array $arguments): string
+    {
+        try {
+            return $this->urlGenerator->generate($model, [], \in_array('absolute', $arguments, true) ? UrlGeneratorInterface::ABSOLUTE_URL : UrlGeneratorInterface::ABSOLUTE_PATH);
+        } catch (ForwardPageNotFoundException) {
             return '';
         }
-
-        switch ($insertTag) {
-            case 'gallery':
-                return sprintf(
-                    '<a href="%s" title="%s">%s</a>',
-                    $this->urlRenderer->generateGalleryUrl($gallery, \in_array('absolute', $flags, true)),
-                    StringUtil::specialchars($gallery->title),
-                    $gallery->title,
-                );
-
-            case 'gallery_open':
-                return sprintf(
-                    '<a href="%s" title="%s">',
-                    $this->urlRenderer->generateGalleryUrl($gallery, \in_array('absolute', $flags, true)),
-                    StringUtil::specialchars($gallery->title),
-                );
-
-            case 'gallery_url':
-                return $this->urlRenderer->generateGalleryUrl($gallery, \in_array('absolute', $flags, true));
-
-            case 'gallery_title':
-                return StringUtil::specialchars($gallery->title);
-        }
-
-        return '';
     }
 }
