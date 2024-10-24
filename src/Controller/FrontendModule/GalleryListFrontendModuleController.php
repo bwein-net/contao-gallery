@@ -44,7 +44,7 @@ class GalleryListFrontendModuleController extends AbstractGalleryFrontendModuleC
         }
 
         // Show the gallery reader if an gallery has been selected
-        if ($model->bweinGalleryReaderModule > 0 && (isset($_GET['items']) || (Config::get('useAutoItem') && isset($_GET['auto_item'])))) {
+        if ($model->bweinGalleryReaderModule > 0 && null !== Input::get('auto_item')) {
             return new Response(Controller::getFrontendModule($model->bweinGalleryReaderModule, $template->inColumn));
         }
 

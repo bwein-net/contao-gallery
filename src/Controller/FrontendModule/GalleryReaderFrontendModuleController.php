@@ -13,7 +13,6 @@ declare(strict_types=1);
 namespace Bwein\Gallery\Controller\FrontendModule;
 
 use Bwein\Gallery\Model\GalleryModel;
-use Contao\Config;
 use Contao\CoreBundle\Exception\InternalServerErrorException;
 use Contao\CoreBundle\Exception\PageNotFoundException;
 use Contao\CoreBundle\Routing\ResponseContext\HtmlHeadBag\HtmlHeadBag;
@@ -63,13 +62,9 @@ class GalleryReaderFrontendModuleController extends AbstractGalleryFrontendModul
     {
         $this->framework->initialize();
 
-        // Set the gallery from the auto_item parameter
-        if (!isset($_GET['items']) && isset($_GET['auto_item']) && Config::get('useAutoItem')) {
-            Input::setGet('items', Input::get('auto_item'));
-        }
-
-        // Return an empty string if "items" is not set (to combine list and reader on same page)
-        if (!Input::get('items')) {
+        // Return an empty string if "auto_item" is not set (to combine list and reader
+        // on same page)
+        if (null === Input::get('auto_item')) {
             return new Response();
         }
 
@@ -97,7 +92,7 @@ class GalleryReaderFrontendModuleController extends AbstractGalleryFrontendModul
         }
 
         // Get the gallery
-        $this->gallery = GalleryModel::findPublishedByParentAndIdOrAlias(Input::get('items'), $model->bweinGalleryCategories);
+        $this->gallery = GalleryModel::findPublishedByParentAndIdOrAlias(Input::get('auto_item'), $model->bweinGalleryCategories);
 
         // The gallery does not exist
         if (null === $this->gallery) {
