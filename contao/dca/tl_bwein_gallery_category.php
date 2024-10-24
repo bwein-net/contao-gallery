@@ -40,36 +40,6 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery_category'] =
             'fields' => ['title'],
             'format' => '%s',
         ],
-        'global_operations' => [
-            'all' => [
-                'href' => 'act=select',
-                'class' => 'header_edit_all',
-                'attributes' => 'onclick="Backend.getScrollOffset()" accesskey="e"',
-            ],
-        ],
-        'operations' => [
-            'edit' => [
-                'href' => 'table=tl_bwein_gallery',
-                'icon' => 'edit.svg',
-            ],
-            'editheader' => [
-                'href' => 'act=edit',
-                'icon' => 'header.svg',
-            ],
-            'copy' => [
-                'href' => 'act=copy',
-                'icon' => 'copy.svg',
-            ],
-            'delete' => [
-                'href' => 'act=delete',
-                'icon' => 'delete.svg',
-                'attributes' => 'onclick="if(!confirm(\''.($GLOBALS['TL_LANG']['MSC']['deleteConfirm'] ?? null).'\'))return false;Backend.getScrollOffset()"',
-            ],
-            'show' => [
-                'href' => 'act=show',
-                'icon' => 'show.svg',
-            ],
-        ],
     ],
 
     // Palettes

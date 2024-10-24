@@ -46,68 +46,21 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery'] =
             'panelLayout' => 'filter;sort,search,limit',
             'child_record_class' => 'no_padding',
         ],
-        'global_operations' => [
-            'all' => [
-                'href' => 'act=select',
-                'class' => 'header_edit_all',
-                'attributes' => 'onclick="Backend.getScrollOffset()" accesskey="e"',
-            ],
-        ],
         'operations' => [
-            'edit' => [
-                'href' => 'act=edit',
-                'icon' => 'edit.svg',
-            ],
-            'copy' => [
-                'href' => 'act=paste&amp;mode=copy',
-                'icon' => 'copy.svg',
-            ],
-            'cut' => [
-                'href' => 'act=paste&amp;mode=cut',
-                'icon' => 'cut.svg',
-            ],
-            'delete' => [
-                'href' => 'act=delete',
-                'icon' => 'delete.svg',
-                'attributes' => 'onclick="if(!confirm(\''.($GLOBALS['TL_LANG']['tl_bwein_gallery']['deleteConfirm'] ?? null).'\'))return false;Backend.getScrollOffset()"',
-            ],
+            'edit',
+            'copy',
+            'cut',
+            'delete',
             'toggle' => [
-                'attributes' => 'onclick="Backend.getScrollOffset();"',
-                'haste_ajax_operation' => [
-                    'field' => 'published',
-                    'options' => [
-                        [
-                            'value' => '0',
-                            'icon' => 'visible_.svg',
-                        ],
-                        [
-                            'value' => '1',
-                            'icon' => 'visible.svg',
-                        ],
-                    ],
-                ],
+                'href' => 'act=toggle&amp;field=published',
+                'icon' => 'visible.svg',
                 'showInHeader' => true,
             ],
             'feature' => [
-                'attributes' => 'onclick="Backend.getScrollOffset();"',
-                'haste_ajax_operation' => [
-                    'field' => 'featured',
-                    'options' => [
-                        [
-                            'value' => '0',
-                            'icon' => 'featured_.svg',
-                        ],
-                        [
-                            'value' => '1',
-                            'icon' => 'featured.svg',
-                        ],
-                    ],
-                ],
+                'href' => 'act=toggle&amp;field=featured',
+                'icon' => 'featured.svg',
             ],
-            'show' => [
-                'href' => 'act=show',
-                'icon' => 'show.svg',
-            ],
+            'show',
         ],
     ],
 
@@ -147,6 +100,7 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery'] =
         ],
         'featured' => [
             'exclude' => true,
+            'toggle' => true,
             'filter' => true,
             'inputType' => 'checkbox',
             'eval' => ['tl_class' => 'w50 m12'],
@@ -301,6 +255,7 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery'] =
         ],
         'published' => [
             'exclude' => true,
+            'toggle' => true,
             'filter' => true,
             'flag' => 1,
             'inputType' => 'checkbox',
