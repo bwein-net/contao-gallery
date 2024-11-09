@@ -14,6 +14,8 @@ namespace Bwein\Gallery\Security;
 
 final class ContaoGalleryPermissions
 {
+    public const USER_CAN_ACCESS_MODULE = 'contao_user.modules.gallery';
+
     public const USER_CAN_EDIT_CATEGORY = 'contao_user.gallery';
 
     public const USER_CAN_CREATE_CATEGORIES = 'contao_user.galleryp.create';
