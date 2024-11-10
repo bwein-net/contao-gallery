@@ -14,10 +14,8 @@ namespace Bwein\Gallery\EventListener\DataContainer;
 
 use Bwein\Gallery\Model\GalleryCategoryModel;
 use Bwein\Gallery\Model\GalleryModel;
-use Contao\BackendUser;
 use Contao\Config;
 use Contao\CoreBundle\DataContainer\PaletteManipulator;
-use Contao\CoreBundle\Exception\AccessDeniedException;
 use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\CoreBundle\Routing\ContentUrlGenerator;
 use Contao\CoreBundle\ServiceAnnotation\Callback;
@@ -25,7 +23,6 @@ use Contao\CoreBundle\Slug\Slug;
 use Contao\Database;
 use Contao\DataContainer;
 use Contao\Date;
-use Contao\Input;
 use Contao\PageModel;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -68,118 +65,6 @@ class GalleryListener
         }
     }
 
-    /**
-     * @Callback(table="tl_bwein_gallery", target="config.onload")
-     *
-     * @throws AccessDeniedException
-     */
-    public function checkPermission(DataContainer|null $dc = null): void
-    {
-        /** @var BackendUser $backendUser */
-        $backendUser = $this->framework->getAdapter(BackendUser::class)->getInstance();
-
-        if ($backendUser->isAdmin) {
-            return;
-        }
-
-        // Set the root IDs
-        if (empty($backendUser->gallery) || !\is_array($backendUser->gallery)) {
-            $root = [0];
-        } else {
-            $root = $backendUser->gallery;
-        }
-
-        $root = array_map('intval', $root);
-        $id = \strlen(Input::get('id')) ? Input::get('id') : $dc->currentPid;
-
-        // Check current action
-        $action = $this->requestStack->getCurrentRequest()->query->get('act');
-
-        switch ($action) {
-            case 'paste':
-            case 'select':
-                if (!\in_array($dc->currentPid, $root, true)) {
-                    throw new AccessDeniedException('Not enough permissions to access gallery category ID '.$id.'.');
-                }
-                break;
-
-            case 'create':
-                if (!Input::get('pid') || !\in_array((int) Input::get('pid'), $root, true)) {
-                    throw new AccessDeniedException('Not enough permissions to create galleries in gallery category ID '.Input::get('pid').'.');
-                }
-                break;
-
-            case 'cut':
-            case 'copy':
-                if ('cut' === $action && 1 === Input::get('mode')) {
-                    $category = Database::getInstance()->prepare('SELECT pid FROM tl_bwein_gallery WHERE id=?')
-                        ->limit(1)
-                        ->execute(Input::get('pid'))
-                    ;
-
-                    if ($category->numRows < 1) {
-                        throw new AccessDeniedException('Invalid gallery ID '.Input::get('pid').'.');
-                    }
-
-                    $pid = $category->pid;
-                } else {
-                    $pid = Input::get('pid');
-                }
-
-                if (!\in_array((int) $pid, $root, true)) {
-                    throw new AccessDeniedException('Not enough permissions to '.$action.' gallery item ID '.$id.' to gallery category ID '.$pid.'.');
-                }
-                // no break
-
-            case 'edit':
-            case 'show':
-            case 'delete':
-            case 'toggle':
-            case 'feature':
-                $category = Database::getInstance()->prepare('SELECT pid FROM tl_bwein_gallery WHERE id=?')
-                    ->limit(1)
-                    ->execute($id)
-                ;
-
-                if ($category->numRows < 1) {
-                    throw new AccessDeniedException('Invalid gallery ID '.$id.'.');
-                }
-
-                if (!\in_array((int) $category->pid, $root, true)) {
-                    throw new AccessDeniedException('Not enough permissions to '.$action.' gallery ID '.$id.' of gallery category ID '.$category->pid.'.');
-                }
-                break;
-
-            case 'editAll':
-            case 'deleteAll':
-            case 'overrideAll':
-            case 'cutAll':
-            case 'copyAll':
-                if (!\in_array((int) $id, $root, true)) {
-                    throw new AccessDeniedException('Not enough permissions to access gallery category ID '.$id.'.');
-                }
-
-                $category = Database::getInstance()->prepare('SELECT id FROM tl_bwein_gallery WHERE pid=?')
-                    ->execute($id)
-                ;
-
-                $objSession = $this->requestStack->getSession();
-                $session = $objSession->all();
-                $session['CURRENT']['IDS'] = array_intersect((array) $session['CURRENT']['IDS'], $category->fetchEach('id'));
-                $objSession->replace($session);
-                break;
-
-            default:
-                if ($action) {
-                    throw new AccessDeniedException('Invalid command "'.$action.'".');
-                }
-
-                if (!\in_array((int) $id, $root, true)) {
-                    throw new AccessDeniedException('Not enough permissions to access gallery category ID '.$id.'.');
-                }
-                break;
-        }
-    }
 
     /**
      * @Callback(table="tl_bwein_gallery", target="fields.alias.save")
