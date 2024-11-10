@@ -17,7 +17,6 @@ use Contao\CoreBundle\Exception\InternalServerErrorException;
 use Contao\CoreBundle\Exception\PageNotFoundException;
 use Contao\CoreBundle\Routing\ResponseContext\HtmlHeadBag\HtmlHeadBag;
 use Contao\CoreBundle\Routing\ResponseContext\ResponseContextAccessor;
-use Contao\CoreBundle\ServiceAnnotation\FrontendModule;
 use Contao\CoreBundle\String\HtmlDecoder;
 use Contao\Environment;
 use Contao\Input;
@@ -28,9 +27,7 @@ use Contao\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * @FrontendModule("galleryreader", category="gallery", template="mod_galleryreader")
- */
+#[AsFrontendModule('galleryreader', category: 'gallery', template: 'mod_galleryreader')]
 class GalleryReaderFrontendModuleController extends AbstractGalleryFrontendModuleController
 {
     protected ResponseContextAccessor $responseContextAccessor;

@@ -14,8 +14,8 @@ namespace Bwein\Gallery\EventListener\DataContainer;
 
 use Bwein\Gallery\Model\GalleryCategoryModel;
 use Contao\BackendUser;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsCallback;
 use Contao\CoreBundle\Framework\ContaoFramework;
-use Contao\CoreBundle\ServiceAnnotation\Callback;
 use Contao\Database;
 use Contao\DataContainer;
 
@@ -31,9 +31,7 @@ class ModuleListener
     {
     }
 
-    /**
-     * @Callback(table="tl_module", target="fields.bweinGalleryCategories.options")
-     */
+    #[AsCallback(table: 'tl_module', target: 'fields.bweinGalleryCategories.options')]
     public function getGalleryCategories(DataContainer $dataContainer): array
     {
         /** @var BackendUser $backendUser */
@@ -56,9 +54,7 @@ class ModuleListener
         return $return;
     }
 
-    /**
-     * @Callback(table="tl_module", target="fields.bweinGalleryReaderModule.options")
-     */
+    #[AsCallback(table: 'tl_module', target: 'fields.bweinGalleryReaderModule.options')]
     public function getReaderModules(DataContainer $dataContainer): array
     {
         $return = [];

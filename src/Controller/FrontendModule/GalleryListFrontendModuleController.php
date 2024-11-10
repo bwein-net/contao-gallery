@@ -15,8 +15,8 @@ namespace Bwein\Gallery\Controller\FrontendModule;
 use Bwein\Gallery\Model\GalleryModel;
 use Contao\Config;
 use Contao\Controller;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsFrontendModule;
 use Contao\CoreBundle\Exception\PageNotFoundException;
-use Contao\CoreBundle\ServiceAnnotation\FrontendModule;
 use Contao\Environment;
 use Contao\Input;
 use Contao\Model\Collection;
@@ -27,9 +27,7 @@ use Contao\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * @FrontendModule("gallerylist", category="gallery", template="mod_gallerylist")
- */
+#[AsFrontendModule('gallerylist', category: 'gallery', template: 'mod_gallerylist')]
 class GalleryListFrontendModuleController extends AbstractGalleryFrontendModuleController
 {
     protected function getResponse(Template $template, ModuleModel $model, Request $request): Response

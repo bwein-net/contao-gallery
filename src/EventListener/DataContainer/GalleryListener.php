@@ -16,9 +16,9 @@ use Bwein\Gallery\Model\GalleryCategoryModel;
 use Bwein\Gallery\Model\GalleryModel;
 use Contao\Config;
 use Contao\CoreBundle\DataContainer\PaletteManipulator;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsCallback;
 use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\CoreBundle\Routing\ContentUrlGenerator;
-use Contao\CoreBundle\ServiceAnnotation\Callback;
 use Contao\CoreBundle\Slug\Slug;
 use Contao\Database;
 use Contao\DataContainer;
@@ -42,9 +42,7 @@ class GalleryListener
     ) {
     }
 
-    /**
-     * @Callback(table="tl_bwein_gallery", target="config.onload")
-     */
+    #[AsCallback(table: 'tl_bwein_gallery', target: 'config.onload')]
     public function generatePalette(DataContainer|null $dc = null): void
     {
         if (null === $dc || !$dc->id || 'edit' !== $this->requestStack->getCurrentRequest()->query->get('act')) {
@@ -65,10 +63,7 @@ class GalleryListener
         }
     }
 
-
-    /**
-     * @Callback(table="tl_bwein_gallery", target="fields.alias.save")
-     */
+    #[AsCallback(table: 'tl_bwein_gallery', target: 'fields.alias.save')]
     public function generateAlias($value, DataContainer $dc): string
     {
         $aliasExists = static fn (string $alias): bool => Database::getInstance()->prepare('SELECT id FROM tl_bwein_gallery WHERE alias=? AND id!=?')->execute($alias, $dc->id)->numRows > 0;
@@ -83,10 +78,8 @@ class GalleryListener
         return (string) $value;
     }
 
-    /**
-     * @Callback(table="tl_bwein_gallery", target="fields.startDate.load")
-     * @Callback(table="tl_bwein_gallery", target="fields.endDate.load")
-     */
+    #[AsCallback(table: 'tl_bwein_gallery', target: 'fields.startDate.load')]
+    #[AsCallback(table: 'tl_bwein_gallery', target: 'fields.endDate.load')]
     public function loadDate($value, DataContainer $dc): int|null
     {
         if (null === $value) {
@@ -98,9 +91,8 @@ class GalleryListener
 
     /**
      * Adjust start end end time of the gallery.
-     *
-     * @Callback(table="tl_bwein_gallery", target="config.onsubmit")
      */
+    #[AsCallback(table: 'tl_bwein_gallery', target: 'config.onsubmit')]
     public function adjustTime(DataContainer $dataContainer): void
     {
         // Return if there is no active record (override all) or no start date has been
@@ -123,25 +115,19 @@ class GalleryListener
         Database::getInstance()->prepare('UPDATE tl_bwein_gallery %s WHERE id=?')->set($where)->execute($dataContainer->id);
     }
 
-    /**
-     * @Callback(table="tl_bwein_gallery", target="fields.serpPreview.eval.url")
-     */
+    #[AsCallback(table: 'tl_bwein_gallery', target: 'fields.serpPreview.eval.url')]
     public function getSerpUrl(GalleryModel $model): string
     {
         return $this->urlGenerator->generate($model, [], UrlGeneratorInterface::ABSOLUTE_URL);
     }
 
-    /**
-     * @Callback(table="tl_bwein_gallery", target="list.sorting.child_record")
-     */
+    #[AsCallback(table: 'tl_bwein_gallery', target: 'list.sorting.child_record')]
     public function listgalleryGalleries(array $row): string
     {
         return '<div class="tl_content_left">'.$row['title'].' <span style="color:#999;padding-left:3px">['.Date::parse(Config::get('dateFormat'), $row['startDate']).']</span></div>';
     }
 
-    /**
-     * @Callback(table="tl_bwein_gallery", target="config.oninvalidate_cache_tags")
-     */
+    #[AsCallback(table: 'tl_bwein_gallery', target: 'config.oninvalidate_cache_tags')]
     public function addSitemapCacheInvalidationTag(DataContainer $dataContainer, array $tags)
     {
         $category = GalleryCategoryModel::findById($dataContainer->activeRecord->pid);
