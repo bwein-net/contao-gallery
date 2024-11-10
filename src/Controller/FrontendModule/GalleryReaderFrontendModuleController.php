@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Bwein\Gallery\Controller\FrontendModule;
 
 use Bwein\Gallery\Model\GalleryModel;
+use Contao\CoreBundle\DependencyInjection\Attribute\AsFrontendModule;
 use Contao\CoreBundle\Exception\InternalServerErrorException;
 use Contao\CoreBundle\Exception\PageNotFoundException;
 use Contao\CoreBundle\Routing\ResponseContext\HtmlHeadBag\HtmlHeadBag;
