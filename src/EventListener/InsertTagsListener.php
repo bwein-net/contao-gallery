@@ -68,7 +68,7 @@ class InsertTagsListener implements InsertTagResolverNestedResolvedInterface
                 OutputType::html,
             ),
             'gallery_url' => new InsertTagResult($this->generateGalleryUrl($model, $arguments), OutputType::url),
-            'news_title' => new InsertTagResult($model->title),
+            'gallery_title' => new InsertTagResult($model->title),
             default => new InsertTagResult(''),
         };
     }
