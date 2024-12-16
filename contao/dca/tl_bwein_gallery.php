@@ -201,7 +201,7 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery'] =
         'description' => [
             'search' => true,
             'inputType' => 'textarea',
-            'eval' => ['rte' => 'tinyMCE', 'tl_class' => 'clr'],
+            'eval' => ['rte' => 'tinyMCE', 'tl_class' => 'clr', 'basicEntities' => true],
             'sql' => 'text NULL',
         ],
         'metaTitle' => [
