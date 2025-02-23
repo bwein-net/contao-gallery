@@ -46,9 +46,12 @@
   },
   "require-dev": {
     "contao/manager-plugin": "^2.0",
+    "hofff/contao-social-tags": "^2.0",
+    "oveleon/contao-component-style-manager": "^3.0",
     "terminal42/contao-changelanguage": "^3.6"
   },
   "suggest": {
+    "hofff/contao-social-tags": "Supports social tags for galleries.",
     "oveleon/contao-component-style-manager": "Supports style for galleries."
   },
   "autoload": {

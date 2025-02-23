@@ -2,8 +2,6 @@ services:
     _defaults:
         autowire: true
         autoconfigure: true
-        bind:
-            string $projectDir: '%kernel.project_dir%'
 
     _instanceof:
         Contao\CoreBundle\Framework\FrameworkAwareInterface:
@@ -12,7 +10,10 @@ services:
 
     Bwein\Gallery\:
         resource: '../src/*'
-        exclude: '../src/{DependencyInjection,Model,Resources}'
+        exclude:
+            - '../src/{DependencyInjection,Model,Resources}'
+            - '../src/EventListener/SocialTagsListener.php'
+            - '../src/Data/Extractor/GalleryDataExtractor.php'
 
     Bwein\Gallery\EventListener\BackendAssetsListener:
         tags:
