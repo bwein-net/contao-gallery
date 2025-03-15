@@ -70,7 +70,7 @@ class GalleryListener
 
         // Generate alias if there is none
         if ('' === (string) $value) {
-            $value = $this->slug->generate($dc->activeRecord->title, GalleryCategoryModel::findById($dc->activeRecord->pid)->jumpTo, $aliasExists);
+            $value = $this->slug->generate($dc->activeRecord->title ?? '', GalleryCategoryModel::findById($dc->activeRecord->pid)->jumpTo, $aliasExists);
         } elseif ($aliasExists($value)) {
             throw new \Exception(\sprintf($this->translator->trans('ERR.aliasExists', [], 'contao_default'), $value));
         }
