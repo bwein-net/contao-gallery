@@ -141,6 +141,10 @@ class GalleryModel extends Model
             return null;
         }
 
+        if (!is_string($value) && !is_numeric($value)) {
+            return null;
+        }
+        
         $t = static::$strTable;
         $columns = !preg_match('/^[1-9]\d*$/', $value) ? ["$t.alias=?"] : ["$t.id=?"];
         $columns[] = "$t.pid IN(".implode(',', array_map('\intval', $pids)).')';
