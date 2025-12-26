@@ -36,18 +36,19 @@
   "require": {
     "php": "^8.2",
     "contao/core-bundle": "^5.0",
-    "symfony/config": "^6.0",
-    "symfony/dependency-injection": "^6.0",
-    "symfony/http-foundation": "^6.0",
-    "symfony/http-kernel": "^6.0",
-    "symfony/routing": "^6.0",
-    "symfony/security-core": "^6.0",
-    "symfony/translation": "^6.0"
+    "symfony/config": "^6.4 || ^7.0",
+    "symfony/dependency-injection": "^6.4 || ^7.0",
+    "symfony/http-foundation": "^6.4 || ^7.0",
+    "symfony/http-kernel": "^6.4 || ^7.0",
+    "symfony/routing": "^6.4 || ^7.0",
+    "symfony/security-core": "^6.4 || ^7.0",
+    "symfony/translation": "^6.4 || ^7.0"
   },
   "require-dev": {
     "contao/manager-plugin": "^2.0",
     "hofff/contao-social-tags": "^2.0",
     "oveleon/contao-component-style-manager": "^3.0",
+    "terminal42/contao-build-tools": "dev-main",
     "terminal42/contao-changelanguage": "^3.6"
   },
   "suggest": {
@@ -63,16 +64,11 @@
     "allow-plugins": {
       "contao-components/installer": true,
       "contao/manager-plugin": true,
-      "php-http/discovery": true
+      "php-http/discovery": true,
+      "terminal42/contao-build-tools": true
     }
   },
   "extra": {
     "contao-manager-plugin": "Bwein\\Gallery\\ContaoManager\\Plugin"
-  },
-  "scripts": {
-    "ecs": [
-      "@php tools/ecs/vendor/bin/ecs check contao/ src/ --fix --ansi",
-      "@php tools/ecs/vendor/bin/ecs check contao/ src/ --config ecs_template.php --fix --ansi"
-    ]
   }
 }
