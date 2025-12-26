@@ -95,25 +95,13 @@ class GalleryPreviewRenderer
             return null;
         }
 
-        switch ($gallery->previewImageType) {
-            case 'no_preview_image':
-                $id = null;
-                break;
-
-            case 'random_preview_image':
-                $id = $this->getRandomPreviewImageId($imageFiles);
-                break;
-
-            case 'first_preview_image':
-                $id = $this->getFirstPreviewImageId($imageFiles);
-                break;
-
-            case 'select_preview_image':
-                $id = $this->getPreviewImageIdByFileUuid($gallery->previewImage);
-                break;
-        }
-
-        return $id;
+        return match ($gallery->previewImageType) {
+            'no_preview_image' => null,
+            'random_preview_image' => $this->getRandomPreviewImageId($imageFiles),
+            'first_preview_image' => $this->getFirstPreviewImageId($imageFiles),
+            'select_preview_image' => $this->getPreviewImageIdByFileUuid($gallery->previewImage),
+            default => $id,
+        };
     }
 
     protected function getRandomPreviewImageId(array $imageFiles): int|null

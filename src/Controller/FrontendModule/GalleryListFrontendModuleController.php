@@ -86,7 +86,7 @@ class GalleryListFrontendModuleController extends AbstractGalleryFrontendModuleC
         if ((int) $model->perPage > 0 && (!isset($limit) || $model->numberOfItems > $model->perPage)) {
             // Adjust the overall limit
             if (isset($limit)) {
-                $total = (int) min($limit, $total);
+                $total = min($limit, $total);
             }
 
             // Get the current page
@@ -146,26 +146,13 @@ class GalleryListFrontendModuleController extends AbstractGalleryFrontendModuleC
             $order .= "$t.featured DESC, ";
         }
 
-        switch ($model->bweinGalleryListOrder) {
-            case 'order_title_asc':
-                $order .= "$t.title";
-                break;
-
-            case 'order_title_desc':
-                $order .= "$t.title DESC";
-                break;
-
-            case 'order_random':
-                $order .= 'RAND()';
-                break;
-
-            case 'order_date_asc':
-                $order .= "$t.startdate";
-                break;
-
-            default:
-                $order .= "$t.startdate DESC";
-        }
+        match ($model->bweinGalleryListOrder) {
+            'order_title_asc' => $order .= "$t.title",
+            'order_title_desc' => $order .= "$t.title DESC",
+            'order_random' => $order .= 'RAND()',
+            'order_date_asc' => $order .= "$t.startdate",
+            default => $order .= "$t.startdate DESC",
+        };
 
         return GalleryModel::findPublishedByPids($galleryCategories, $featured, $limit, $offset, ['order' => $order]);
     }

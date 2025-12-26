@@ -19,6 +19,7 @@ use Contao\CoreBundle\InsertTag\InsertTagParser;
 use Contao\CoreBundle\Routing\ContentUrlGenerator;
 use Contao\CoreBundle\Routing\ResponseContext\ResponseContextAccessor;
 use Contao\CoreBundle\Routing\ScopeMatcher;
+use Hofff\Contao\SocialTags\Data\Extractor;
 use Hofff\Contao\SocialTags\Data\SocialTagsFactory;
 use Hofff\Contao\SocialTags\EventListener\Hook\SocialTagsDataAwareListener;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -59,7 +60,7 @@ class ConditionalServiceRegistrationPass implements CompilerPassInterface
             ])
             ->setAutowired(true)
             ->setAutoconfigured(false)
-            ->addTag('Hofff\Contao\SocialTags\Data\Extractor')
+            ->addTag(Extractor::class)
         ;
     }
 }

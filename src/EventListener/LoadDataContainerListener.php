@@ -24,8 +24,8 @@ use Terminal42\ChangeLanguage\EventListener\DataContainer\ParentTableListener;
 class LoadDataContainerListener
 {
     public function __construct(
-        private TranslatorInterface $translator,
-        private ParameterBagInterface $params,
+        private readonly TranslatorInterface $translator,
+        private readonly ParameterBagInterface $params,
     ) {
     }
 

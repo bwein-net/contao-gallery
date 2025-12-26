@@ -147,7 +147,7 @@ class GalleryModel extends Model
 
         $t = static::$strTable;
         $columns = !preg_match('/^[1-9]\d*$/', $value) ? ["$t.alias=?"] : ["$t.id=?"];
-        $columns[] = "$t.pid IN(".implode(',', array_map('\intval', $pids)).')';
+        $columns[] = "$t.pid IN(".implode(',', array_map(\intval(...), $pids)).')';
 
         if (!static::isPreviewMode($options)) {
             $time = Date::floorToMinute();
@@ -175,7 +175,7 @@ class GalleryModel extends Model
         }
 
         $t = static::$strTable;
-        $columns = ["$t.pid IN(".implode(',', array_map('\intval', $pids)).')'];
+        $columns = ["$t.pid IN(".implode(',', array_map(\intval(...), $pids)).')'];
 
         if (true === $featured) {
             $columns[] = "$t.featured='1'";
@@ -214,7 +214,7 @@ class GalleryModel extends Model
         }
 
         $t = static::$strTable;
-        $columns = ["$t.pid IN(".implode(',', array_map('\intval', $pids)).')'];
+        $columns = ["$t.pid IN(".implode(',', array_map(\intval(...), $pids)).')'];
 
         if (true === $featured) {
             $columns[] = "$t.featured='1'";

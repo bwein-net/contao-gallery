@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 use Contao\BackendUser;
 use Contao\CoreBundle\DataContainer\PaletteManipulator;
+use Contao\DataContainer;
 use Contao\DC_Table;
 use Contao\System;
 use Oveleon\ContaoComponentStyleManager\StyleManager as StyleManagerV2;
@@ -40,7 +41,7 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery'] =
     // List
     'list' => [
         'sorting' => [
-            'mode' => 4,
+            'mode' => DataContainer::MODE_PARENT,
             'fields' => ['startDate'],
             'headerFields' => ['title', 'jumpTo', 'tstamp', 'protected'],
             'panelLayout' => 'filter;sort,search,limit',
@@ -92,7 +93,7 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery'] =
         'title' => [
             'search' => true,
             'sorting' => true,
-            'flag' => 1,
+            'flag' => DataContainer::SORT_INITIAL_LETTER_ASC,
             'inputType' => 'text',
             'eval' => ['mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'],
             'sql' => "varchar(255) NOT NULL default ''",
@@ -116,7 +117,7 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery'] =
             'search' => true,
             'filter' => true,
             'sorting' => false,
-            'flag' => 11,
+            'flag' => DataContainer::SORT_ASC,
             'inputType' => 'select',
             'foreignKey' => 'tl_user.name',
             'eval' => ['doNotCopy' => true, 'chosen' => true, 'mandatory' => true, 'includeBlankOption' => true, 'tl_class' => 'w50'],
@@ -127,7 +128,7 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery'] =
             'default' => time(),
             'filter' => true,
             'sorting' => true,
-            'flag' => 8,
+            'flag' => DataContainer::SORT_MONTH_DESC,
             'inputType' => 'text',
             'eval' => ['rgxp' => 'date', 'mandatory' => true, 'doNotCopy' => true, 'datepicker' => true, 'tl_class' => 'w50 wizard'],
             'sql' => 'bigint(20) NULL',
@@ -237,7 +238,7 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery'] =
         'published' => [
             'toggle' => true,
             'filter' => true,
-            'flag' => 1,
+            'flag' => DataContainer::SORT_INITIAL_LETTER_ASC,
             'inputType' => 'checkbox',
             'eval' => ['doNotCopy' => true],
             'sql' => ['type' => 'boolean', 'default' => false],

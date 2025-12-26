@@ -10,6 +10,7 @@ declare(strict_types=1);
  * @license MIT
  */
 
+use Contao\DataContainer;
 use Contao\DC_Table;
 
 $GLOBALS['TL_DCA']['tl_bwein_gallery_category'] =
@@ -31,9 +32,9 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery_category'] =
     // List
     'list' => [
         'sorting' => [
-            'mode' => 1,
+            'mode' => DataContainer::MODE_SORTED,
             'fields' => ['title'],
-            'flag' => 1,
+            'flag' => DataContainer::SORT_INITIAL_LETTER_ASC,
             'panelLayout' => 'filter;search,limit',
         ],
         'label' => [

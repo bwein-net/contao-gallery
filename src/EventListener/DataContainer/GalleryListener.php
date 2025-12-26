@@ -17,7 +17,6 @@ use Bwein\Gallery\Model\GalleryModel;
 use Contao\Config;
 use Contao\CoreBundle\DataContainer\PaletteManipulator;
 use Contao\CoreBundle\DependencyInjection\Attribute\AsCallback;
-use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\CoreBundle\Routing\ContentUrlGenerator;
 use Contao\CoreBundle\Slug\Slug;
 use Contao\Database;
@@ -36,7 +35,6 @@ class GalleryListener
     public function __construct(
         private readonly RequestStack $requestStack,
         private readonly TranslatorInterface $translator,
-        private readonly ContaoFramework $framework,
         private readonly Slug $slug,
         private readonly ContentUrlGenerator $urlGenerator,
     ) {

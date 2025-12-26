@@ -238,11 +238,11 @@ class GalleryRenderer
         switch ($gallery->sortBy) {
             default:
             case 'name_asc':
-                uksort($imageFiles, static fn ($a, $b): int => strnatcasecmp(basename($a), basename($b)));
+                uksort($imageFiles, static fn ($a, $b): int => strnatcasecmp(basename((string) $a), basename((string) $b)));
                 break;
 
             case 'name_desc':
-                uksort($imageFiles, static fn ($a, $b): int => -strnatcasecmp(basename($a), basename($b)));
+                uksort($imageFiles, static fn ($a, $b): int => -strnatcasecmp(basename((string) $a), basename((string) $b)));
                 break;
 
             case 'date_asc':
@@ -262,9 +262,7 @@ class GalleryRenderer
                 break;
         }
 
-        $imageFiles = array_values($imageFiles);
-
-        return $imageFiles;
+        return array_values($imageFiles);
     }
 
     /**
