@@ -27,6 +27,7 @@ use Contao\StringUtil;
 use Contao\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Contracts\Service\Attribute\Required;
 
 #[AsFrontendModule('galleryreader', category: 'gallery', template: 'mod_galleryreader')]
 class GalleryReaderFrontendModuleController extends AbstractGalleryFrontendModuleController
@@ -37,17 +38,13 @@ class GalleryReaderFrontendModuleController extends AbstractGalleryFrontendModul
 
     protected GalleryModel|null $gallery = null;
 
-    /**
-     * @required
-     */
+    #[Required]
     public function setResponseContextAccessor(ResponseContextAccessor $responseContextAccessor): void
     {
         $this->responseContextAccessor = $responseContextAccessor;
     }
 
-    /**
-     * @required
-     */
+    #[Required]
     public function setHtmlDecoder(HtmlDecoder $htmlDecoder): void
     {
         $this->htmlDecoder = $htmlDecoder;
