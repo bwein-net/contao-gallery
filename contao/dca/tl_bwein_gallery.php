@@ -55,6 +55,7 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery'] =
             'toggle' => [
                 'href' => 'act=toggle&amp;field=published',
                 'icon' => 'visible.svg',
+                'primary' => true,
                 'showInHeader' => true,
             ],
             'feature' => [
