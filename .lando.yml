@@ -2,7 +2,7 @@ name: contao-gallery
 
 services:
     appserver:
-        type: php:8.2
+        type: php:8.3
         via: cli
         overrides:
             extra_hosts:
