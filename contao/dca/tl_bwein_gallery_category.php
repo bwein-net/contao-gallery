@@ -22,6 +22,7 @@ $GLOBALS['TL_DCA']['tl_bwein_gallery_category'] =
         'switchToEdit' => true,
         'enableVersioning' => true,
         'markAsCopy' => 'title',
+        'userRoot' => 'gallery',
         'sql' => [
             'keys' => [
                 'id' => 'primary',

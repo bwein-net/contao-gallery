@@ -12,41 +12,26 @@ declare(strict_types=1);
 
 namespace Bwein\Gallery\EventListener\DataContainer;
 
-use Bwein\Gallery\Model\GalleryCategoryModel;
-use Contao\BackendUser;
+use Bwein\Gallery\Security\ContaoGalleryPermissions;
 use Contao\CoreBundle\DependencyInjection\Attribute\AsCallback;
-use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\Database;
 use Contao\DataContainer;
+use Symfony\Bundle\SecurityBundle\Security;
 
-/**
- * Class ModuleListener.
- */
 class ModuleListener
 {
-    /**
-     * Import the back end user object.
-     */
-    public function __construct(private readonly ContaoFramework $framework)
+    public function __construct(private readonly Security $security)
     {
     }
 
     #[AsCallback(table: 'tl_module', target: 'fields.bweinGalleryCategories.options')]
     public function getGalleryCategories(DataContainer $dataContainer): array
     {
-        /** @var BackendUser $backendUser */
-        $backendUser = $this->framework->getAdapter(BackendUser::class)->getInstance();
-
-        if (!$backendUser->isAdmin && !\is_array($backendUser->gallery)) {
-            return [];
-        }
-
         $return = [];
         $categories = Database::getInstance()->execute('SELECT id, title FROM tl_bwein_gallery_category ORDER BY title');
 
         while ($categories->next()) {
-            /** @var GalleryCategoryModel $categories */
-            if ($backendUser->hasAccess($categories->id, 'gallery')) {
+            if ($this->security->isGranted(ContaoGalleryPermissions::USER_CAN_EDIT_CATEGORY, $categories->id)) {
                 $return[$categories->id] = $categories->title;
             }
         }

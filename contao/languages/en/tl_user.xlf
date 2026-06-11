@@ -8,13 +8,7 @@
             <trans-unit id="tl_user.gallery.1">
                 <source>Here you can grant access to one or more gallery categories.</source>
             </trans-unit>
-            <trans-unit id="tl_user.galleryp.0">
-                <source>Gallery permissions</source>
-            </trans-unit>
-            <trans-unit id="tl_user.galleryp.1">
-                <source>Here you can define the gallery permissions.</source>
-            </trans-unit>
-            <trans-unit id="tl_user.gallery_legend">
+<trans-unit id="tl_user.gallery_legend">
                 <source>Gallery permissions</source>
             </trans-unit>
         </body>

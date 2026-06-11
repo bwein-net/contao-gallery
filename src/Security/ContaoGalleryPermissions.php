@@ -18,7 +18,7 @@ final class ContaoGalleryPermissions
 
     public const USER_CAN_EDIT_CATEGORY = 'contao_user.gallery';
 
-    public const USER_CAN_CREATE_CATEGORIES = 'contao_user.galleryp.create';
+    public const USER_CAN_CREATE_CATEGORIES = 'contao_user.cud.tl_bwein_gallery_category::create';
 
-    public const USER_CAN_DELETE_CATEGORIES = 'contao_user.galleryp.delete';
+    public const USER_CAN_DELETE_CATEGORIES = 'contao_user.cud.tl_bwein_gallery_category::delete';
 }

@@ -25,4 +25,3 @@ $GLOBALS['TL_MODELS']['tl_bwein_gallery'] = GalleryModel::class;
 
 // Add permissions
 $GLOBALS['TL_PERMISSIONS'][] = 'gallery';
-$GLOBALS['TL_PERMISSIONS'][] = 'galleryp';

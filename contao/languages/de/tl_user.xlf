@@ -11,15 +11,7 @@
                 <target>Hier können Sie den Zugriff auf ein oder mehrere Galerie-Kategorien
                     erlauben.</target>
             </trans-unit>
-            <trans-unit id="tl_user.galleryp.0">
-                <source>Gallery Category permissions</source>
-                <target>Galerie-Katgeorierechte</target>
-            </trans-unit>
-            <trans-unit id="tl_user.galleryp.1">
-                <source>Here you can define the gallery permissions.</source>
-                <target>Hier können Sie die Katgeorierechte festlegen.</target>
-            </trans-unit>
-            <trans-unit id="tl_user.gallery_legend">
+<trans-unit id="tl_user.gallery_legend">
                 <source>Gallery permissions</source>
                 <target>Galerierechte</target>
             </trans-unit>
