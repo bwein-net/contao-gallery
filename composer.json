@@ -54,6 +54,7 @@
   },
   "suggest": {
     "hofff/contao-social-tags": "Supports social tags for galleries.",
+    "madeyourday/contao-rocksolid-frontend-helper": "Supports frontend helper toolbar for galleries.",
     "oveleon/contao-component-style-manager": "Supports style for galleries."
   },
   "autoload": {

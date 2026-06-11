@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Bwein\Gallery\DependencyInjection\Compiler;
 
 use Bwein\Gallery\Data\Extractor\GalleryDataExtractor;
+use Bwein\Gallery\EventListener\ParseFrontendTemplateListener;
 use Bwein\Gallery\EventListener\SocialTagsListener;
 use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\CoreBundle\InsertTag\InsertTagParser;
@@ -22,6 +23,8 @@ use Contao\CoreBundle\Routing\ScopeMatcher;
 use Hofff\Contao\SocialTags\Data\Extractor;
 use Hofff\Contao\SocialTags\Data\SocialTagsFactory;
 use Hofff\Contao\SocialTags\EventListener\Hook\SocialTagsDataAwareListener;
+use MadeYourDay\RockSolidFrontendHelper\FrontendHooks;
+use Symfony\Component\DependencyInjection\Argument\ServiceClosureArgument;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Parameter;
@@ -32,6 +35,20 @@ class ConditionalServiceRegistrationPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container): void
     {
+        if (class_exists(FrontendHooks::class)) {
+            $container->register(ParseFrontendTemplateListener::class, ParseFrontendTemplateListener::class)
+                ->setArguments([
+                    new Reference('rocksolid_frontend_helper.element_builder'),
+                    new Parameter('rocksolid_frontend_helper.backend_modules'),
+                    new Reference('contao.fragment.compositor'),
+                    new ServiceClosureArgument(new Reference('contao.listener.data_container.template_options')),
+                ])
+                ->setAutowired(true)
+                ->setAutoconfigured(false)
+                ->addTag('contao.hook', ['hook' => 'parseFrontendTemplate'])
+            ;
+        }
+
         if (!class_exists(SocialTagsDataAwareListener::class)) {
             return;
         }

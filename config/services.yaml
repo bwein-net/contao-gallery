@@ -13,6 +13,7 @@ services:
         exclude:
             - '../src/{DependencyInjection,Model,Resources}'
             - '../src/EventListener/SocialTagsListener.php'
+            - '../src/EventListener/ParseFrontendTemplateListener.php'
             - '../src/Data/Extractor/GalleryDataExtractor.php'
 
     Bwein\Gallery\EventListener\BackendAssetsListener:
