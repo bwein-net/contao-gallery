@@ -29,7 +29,6 @@ class LoadDataContainerListener
         private readonly TranslatorInterface $translator,
         private readonly ParameterBagInterface $params,
         private readonly RequestStack $requestStack,
-        private readonly PageFinder $pageFinder,
     ) {
     }
 
@@ -51,7 +50,7 @@ class LoadDataContainerListener
                     $listener = new GalleryChildTableListener($this->requestStack);
                     $listener->register($table);
 
-                    $listener = new ParentChildViewListener($this->pageFinder, $this->requestStack);
+                    $listener = new ParentChildViewListener(new PageFinder(), $this->requestStack);
                     $listener->register($table);
                     break;
             }
