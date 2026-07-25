@@ -16,9 +16,11 @@ use Bwein\Gallery\EventListener\DataContainer\GalleryChildTableListener;
 use Bwein\Gallery\EventListener\DataContainer\MissingLanguageIconListener;
 use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Terminal42\ChangeLanguage\EventListener\BackendView\ParentChildViewListener;
 use Terminal42\ChangeLanguage\EventListener\DataContainer\ParentTableListener;
+use Terminal42\ChangeLanguage\PageFinder;
 
 #[AsHook('loadDataContainer')]
 class LoadDataContainerListener
@@ -26,6 +28,8 @@ class LoadDataContainerListener
     public function __construct(
         private readonly TranslatorInterface $translator,
         private readonly ParameterBagInterface $params,
+        private readonly RequestStack $requestStack,
+        private readonly PageFinder $pageFinder,
     ) {
     }
 
@@ -36,19 +40,19 @@ class LoadDataContainerListener
         if (isset($bundles['Terminal42ChangeLanguageBundle'])) {
             switch ($table) {
                 case 'tl_bwein_gallery_category':
-                    $listener = new ParentTableListener($table);
-                    $listener->register();
+                    $listener = new ParentTableListener();
+                    $listener->register($table);
                     break;
 
                 case 'tl_bwein_gallery':
                     $listener = new MissingLanguageIconListener($this->translator);
                     $listener->register($table);
 
-                    $listener = new GalleryChildTableListener($table);
-                    $listener->register();
+                    $listener = new GalleryChildTableListener($this->requestStack);
+                    $listener->register($table);
 
-                    $listener = new ParentChildViewListener($table);
-                    $listener->register();
+                    $listener = new ParentChildViewListener($this->pageFinder, $this->requestStack);
+                    $listener->register($table);
                     break;
             }
         }

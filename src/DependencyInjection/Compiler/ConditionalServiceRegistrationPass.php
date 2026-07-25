@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Bwein\Gallery\DependencyInjection\Compiler;
 
 use Bwein\Gallery\Data\Extractor\GalleryDataExtractor;
+use Bwein\Gallery\EventListener\Navigation\GalleryNavigationListener;
 use Bwein\Gallery\EventListener\ParseFrontendTemplateListener;
 use Bwein\Gallery\EventListener\SocialTagsListener;
 use Contao\CoreBundle\Framework\ContaoFramework;
@@ -20,6 +21,7 @@ use Contao\CoreBundle\InsertTag\InsertTagParser;
 use Contao\CoreBundle\Routing\ContentUrlGenerator;
 use Contao\CoreBundle\Routing\ResponseContext\ResponseContextAccessor;
 use Contao\CoreBundle\Routing\ScopeMatcher;
+use Contao\CoreBundle\Security\Authentication\Token\TokenChecker;
 use Hofff\Contao\SocialTags\Data\Extractor;
 use Hofff\Contao\SocialTags\Data\SocialTagsFactory;
 use Hofff\Contao\SocialTags\EventListener\Hook\SocialTagsDataAwareListener;
@@ -30,6 +32,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Parameter;
 use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Terminal42\ChangeLanguage\EventListener\Navigation\AbstractNavigationListener;
 
 class ConditionalServiceRegistrationPass implements CompilerPassInterface
 {
@@ -46,6 +49,17 @@ class ConditionalServiceRegistrationPass implements CompilerPassInterface
                 ->setAutowired(true)
                 ->setAutoconfigured(false)
                 ->addTag('contao.hook', ['hook' => 'parseFrontendTemplate'])
+            ;
+        }
+
+        if (class_exists(AbstractNavigationListener::class)) {
+            $container->register(GalleryNavigationListener::class, GalleryNavigationListener::class)
+                ->setArguments([
+                    new Reference(TokenChecker::class),
+                ])
+                ->setAutowired(true)
+                ->setAutoconfigured(false)
+                ->addTag('contao.hook', ['hook' => 'changelanguageNavigation'])
             ;
         }
 

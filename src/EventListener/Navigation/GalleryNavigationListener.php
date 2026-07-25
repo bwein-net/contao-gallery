@@ -23,7 +23,7 @@ class GalleryNavigationListener extends AbstractNavigationListener
 {
     protected function getUrlKey(): string
     {
-        return 'items';
+        return 'auto_item';
     }
 
     protected function findCurrent(): GalleryModel|null
